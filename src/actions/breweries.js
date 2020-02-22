@@ -1,11 +1,25 @@
+
+const setBreweries = (breweries ) => {
+    return { type: 'ADD_BREWERIES', breweries: breweries }
+}
+
+
 export const fetchBreweries = () => {
-    return (dispatch) => {
-        dispatch({ type: 'LOADING_BREWERIES'})
-        fetch('https://api.openbrewerydb.org/breweries')
-        .then(response => {
-            return response.json()
-        }).then(responseJSON => {
-            dispatch({ type: 'ADD_BREWERIES', breweries: responseJSON })
-        })
+
+    return async dispatch => {
+        try {
+            dispatch({ type: 'LOADING_BREWERIES'})
+                const response = await fetch('https://api.openbrewerydb.org/breweries')
+                if (!response.ok) {
+                    throw response
+                }
+                const breweryData = await response.json()
+                dispatch(setBreweries(breweryData))
+        }catch{
+            return 'error in fetch'
+        }
     }
 }
+
+
+
