@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import  Brewery from './brewery'
+import  Brewery from './breweryShow'
 
 
 

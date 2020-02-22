@@ -3,14 +3,13 @@
     text-align: center;
 }
 
-h1 {
-    color: rgb(172, 94, 94);
-}
+
 
 body {
     background-image: url(./Beer.jpg);
     background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+    background-attachment: fixed;
+    
 }

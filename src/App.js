@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './app.css'
 import { connect } from 'react-redux'
 import BreweryContainer from './components/breweryContainer';
-import { fetchBreweries } from './actions/breweries'
+import { fetchBreweries } from './actions/breweryActions'
 
 
 class App extends Component {
@@ -14,7 +14,6 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <h1>Brewery Container</h1>
         <BreweryContainer all={this.props.breweries}/>
       </div>
     );
@@ -23,11 +22,6 @@ class App extends Component {
 
 
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchBreweries: () => dispatch(fetchBreweries())
-//   }
-// }
 
 const mapStateToProps = state => {
   return {
