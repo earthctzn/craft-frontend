@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import BreweriesList from './breweriesList'
-import { connect } from 'react-redux'
-
-
+import BreweriesList from './BreweriesList'
 
 
 
@@ -14,10 +11,6 @@ class BreweryContainer extends Component {
     }
 }
 
-const mapStateToProps = state => {
-   return {
-       all: state.breweries
-   }
-}
 
-export default connect(mapStateToProps)(BreweryContainer) 
+
+export default BreweryContainer 

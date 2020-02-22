@@ -14,7 +14,9 @@ class LoginInput extends Component {
         })
     }
 
-    
+    handleOnSubmit = event => {
+        
+    }
 
     render() {
         return (
