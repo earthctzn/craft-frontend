@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './app.css'
 import { connect } from 'react-redux'
 import BreweryContainer from './components/breweryContainer';
 import { fetchBreweries } from './actions/breweries'
