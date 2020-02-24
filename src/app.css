@@ -10,6 +10,8 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
     background-attachment: fixed;
+    height: fit-content;
+    
     
 }
 nav {
@@ -18,7 +20,7 @@ nav {
     position: fixed;
     justify-content: space-around;
     top: 0;
-    min-height: 10vh;
+    min-height: .5vh;
     width: 100%;
     border-radius: .3in;
    
@@ -38,4 +40,18 @@ nav {
     background: #ddd;
     color: black;
     border-radius: .3em;
+}
+
+.single-brewery {
+    background-color: rgba(248, 243, 243, 0.4);
+    color: darkred;
+    width: 2in;
+    height: in;
+    display: inline-block;
+    display: inline-table;
+    padding: 10px;
+    margin: 10px;
+    border-radius: .3in;
+    border-style: solid;
+    border-color: black;
 }

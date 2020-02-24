@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import  Brewery from './Brewery'
+import BreweryHome from './BreweryHome'
 
 
 
@@ -9,9 +9,12 @@ class SelectedBrewery extends Component {
 
 
     renderBrewery = () => {
+        const { brewery } = this.props
         return(
-           <Brewery brewery={this.props.brewery} />
-        )
+            <>
+                <BreweryHome brewery={brewery}/>
+            </>
+        )   
     }
 
     render() {

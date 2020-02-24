@@ -2,22 +2,39 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import  Brewery from './Brewery'
-
+import { BreweryCard } from './ComponentStyles'
+import { Redirect } from 'react-router-dom'
 
 
 
 class BreweriesList extends Component {
 
+    state = {
+        toSelectedBrewery: false
+    }
+
+    handleOnClick(e, brewery){
+        e.preventDefault()
+        this.props.selectedBrewery(brewery);
+        this.setState({
+            toSelectedBrewery: true
+        })  
+    }
 
     renderBrewery = (props) => {
+        if (this.state.toSelectedBrewery === true) {
+            return  <Redirect to='/selected-brewery'/>
+        } 
         return props.all.breweriesArr.map(brewery => {
             return(
-                <Brewery 
-                    selectedBrewery={this.props.selectedBrewery}
-                    handleOnClick={this.handleOnClick}
-                    key={brewery.id} 
-                    brewery={brewery}  
-                />
+                <BreweryCard key={brewery.id} onClick={e => this.handleOnClick(e, brewery)} >
+                    <Brewery 
+                        selectedBrewery={this.props.selectedBrewery}
+                        handleOnClick={this.handleOnClick}
+                        key={brewery.id} 
+                        brewery={brewery}  
+                    />
+                </BreweryCard> 
             )
         })
     }

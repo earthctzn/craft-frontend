@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { LoginCard } from './ComponentStyles'
 
-class LoginInput extends Component {
+class SignupInput extends Component {
     state = {
+        username: '',
         email: '',
-        password: ''
+        password: '',
+        password_confirmation: ''
     }
 
     handleInputChange = event => {
@@ -15,27 +17,36 @@ class LoginInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        // this.logInUser(this.state)
+        // this.signuUpUser(this.state)
         this.setState({
+            username: '',
             email: '',
-            password: ''
-        })        
+            password: '',
+            password_confirmation: ''
+        })
     }
 
     render() {
         return (
             <LoginCard >
-                <h3>Login To See all breweries!</h3>
                 <form onSubmit={this.handleOnSubmit}>
                     <input
-                        id='email'
+                        id='username'
+                        type="text" 
+                        placeholder="username"
+                        value={this.state.username}
+                        onChange={e => this.handleInputChange(e)}
+                    >
+                    </input>
+                    <input 
+                        id="email"
                         type="text" 
                         placeholder="email"
                         value={this.state.email}
                         onChange={e => this.handleInputChange(e)}
                     >
                     </input>
-                    <input
+                    <input 
                         id="password"
                         type="text" 
                         placeholder="password"
@@ -43,15 +54,19 @@ class LoginInput extends Component {
                         onChange={e => this.handleInputChange(e)}
                     >
                     </input>
-                    <button 
-                        type="submit"
-                    > 
-                        Log In 
-                    </button>
+                    <input
+                        id="password_confirmation"
+                        type="text" 
+                        placeholder="password confirmation"
+                        value={this.state.password_confirmation}
+                        onChange={e => this.handleInputChange(e)}
+                    >
+                    </input>
+                    <button type="submit"> Sign Up </button>
                 </form>
             </LoginCard>
         )
     }
 }
 
-export default LoginInput
+export default SignupInput

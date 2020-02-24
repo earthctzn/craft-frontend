@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './app.css'
 import { connect } from 'react-redux'
 import BreweryContainer from './components/BreweryContainer';
+import LoginInput from './components/LoginInput';
+import SignupInput from './components/SignupInput';
 import { fetchBreweries } from './actions/breweryActions'
 import { 
   BrowserRouter as Router, 
@@ -18,6 +20,14 @@ class App extends Component {
     this.props.fetchBreweries()
   }
 
+  loading = () => {
+    if(this.props.loading === true) {
+      return (
+        <h1>Loading...</h1>
+      )
+    }
+  }
+
   render(){
     return (
       <Router>
@@ -27,10 +37,16 @@ class App extends Component {
             <Route exact path="/">
               <BreweryContainer />
             </Route>
-            <Route path="/selected-brewery" >
-              {console.log(this.props)}
-              <SelectedBrewery/>
+            <Route path="/login" >
+              <LoginInput />
             </Route>
+            <Route path="/signup" >
+              <SignupInput />
+            </Route>
+            <Route path="/selected-brewery" >
+              <SelectedBrewery />
+            </Route>
+
             
           </Switch>
         </div>
@@ -42,7 +58,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return ({
-    brewery: state.brewery
+    loading: state.loading
   })
 }
 
