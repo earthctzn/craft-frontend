@@ -1,5 +1,5 @@
 
-const setBreweries = (breweries ) => {
+const setBreweries = ( breweries ) => {
     return { type: 'ADD_BREWERIES', breweries: breweries }
 }
 

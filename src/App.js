@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './app.css'
 import { connect } from 'react-redux'
-import BreweryContainer from './components/BreweryContainer';
+import BreweryContainer from './containers/BreweryContainer';
 import LoginInput from './components/LoginInput';
 import SignupInput from './components/SignupInput';
 import { fetchBreweries } from './actions/breweryActions'
@@ -10,7 +10,7 @@ import {
   Switch, 
   Route 
 } from 'react-router-dom'
-import SelectedBrewery from './components/selectedBrewery';
+import SelectedBrewery from './components/SelectedBrewery';
 import Nav from './components/Nav'
 
 

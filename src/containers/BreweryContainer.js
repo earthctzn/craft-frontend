@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BreweriesList from './BreweriesList'
+import BreweriesList from '../components/BreweriesList'
 
 
 

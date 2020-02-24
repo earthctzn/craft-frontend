@@ -28,11 +28,11 @@ class BreweriesList extends Component {
         return props.all.breweriesArr.map(brewery => {
             return(
                 <BreweryCard key={brewery.id} onClick={e => this.handleOnClick(e, brewery)} >
-                    <Brewery 
+                    <Brewery
+                        key={brewery.id}
+                        brewery={brewery}
                         selectedBrewery={this.props.selectedBrewery}
                         handleOnClick={this.handleOnClick}
-                        key={brewery.id} 
-                        brewery={brewery}  
                     />
                 </BreweryCard> 
             )

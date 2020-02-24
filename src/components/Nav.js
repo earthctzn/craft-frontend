@@ -11,13 +11,13 @@ class Nav extends Component {
         return (
             <nav>
                 <ul className="nav-links">
-                    <Link to="/">
+                    <Link to="/" className='nav-link'>
                         <li>Home</li>
                     </Link>
-                    <Link to="/login">
+                    <Link to="/login" className='nav-link'>
                         <li>Login</li>
                     </Link>
-                    <Link to="/signup">
+                    <Link to="/signup" className='nav-link'>
                         <li>Signup</li>
                     </Link>
                 </ul>
