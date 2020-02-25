@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
-import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps'
+import { SingleBrewery } from './ComponentStyles'
+import { 
+    GoogleMap, 
+    withScriptjs, 
+    withGoogleMap, 
+    Marker, 
+    InfoWindow } from 'react-google-maps'
 
 
 
 class MyMap extends Component {
 
+    state = {
+        selectedBrewery: ''        
+    }
+    
+    handleOnClick = () => {
+   
+        this.setState({
+            selectedBrewery: this.props.brewery
+        })
+    }
+
     render() {
         const passedLat = parseFloat(this.props.defaultCenter.lat) || 37.780079
-        const passedLng = parseFloat(this.props.defaultCenter.lng) || -122.420174 
+        const passedLng = parseFloat(this.props.defaultCenter.lng) || -122.420174
+        const brewery = this.props.brewery
         return(
             <>
                 <GoogleMap 
@@ -18,8 +36,32 @@ class MyMap extends Component {
                     }}    
                 /> 
                 <Marker
-                    position={{lat: passedLat, lng: passedLng}}
+                    position={{
+                        lat: passedLat, 
+                        lng: passedLng
+                    }}
+                    onClick={e => this.handleOnClick(e)}
                 />
+                {this.state.selectedBrewery && (
+                    <InfoWindow 
+                        position={{
+                            lat: passedLat,
+                            lng: passedLng
+                        }}
+                        onCloseClick={() => {
+                            this.setState({
+                                selectedBrewery: ''
+                            })
+                        }}
+                    >
+                        <SingleBrewery>
+                            <h4>{brewery.name}</h4>
+                            <h5>Tel: { brewery.phone }</h5>
+                            <a href={brewery.website_url}>{brewery.website_url}</a>
+                        </SingleBrewery>
+                    </InfoWindow>
+                )}
+                
             </>
         ) 
         

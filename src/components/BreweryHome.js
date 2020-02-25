@@ -13,7 +13,12 @@ class BreweryHome extends Component {
         const { brewery } = this.props
         return (
             <>
-                <BreweryCard>
+                <div className='thumbnail-container' >
+                    <div className='thumbnail'>
+                        <iframe src={brewery.website_url} frameBorder='0'></iframe>
+                    </div>  
+                </div>
+                {/* <BreweryCard>
                     <h3>{brewery.name}</h3>
                     <h4>Type: {brewery.brewery_type} </h4>
                     <AddressCard >
@@ -24,13 +29,17 @@ class BreweryHome extends Component {
                         {brewery.state}
                     </AddressCard>
                     <a href={brewery.website_url}>Visit our site</a>
-                </BreweryCard>
+                </BreweryCard> */}
                 <MapCard>  
                     <Map 
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 
                         loadingElement={<div style={{ height: "100%" }}/>}
                         containerElement={<div style={{ height: "100%" }}/>}
-                        defaultCenter={{lat: `${ brewery.latitude}`, lng: `${ brewery.longitude}`}} 
+                        brewery={brewery}
+                        defaultCenter={{
+                            lat: `${ brewery.latitude}`, 
+                            lng: `${ brewery.longitude}`
+                        }} 
                         mapElement={<div style={{ 
                             height: "80%", 
                             width: "98.7%",
