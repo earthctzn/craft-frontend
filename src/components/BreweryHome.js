@@ -45,7 +45,7 @@ class BreweryHome extends Component {
                             width: "98.7%",
                             borderRadius: ".3in",
                             borderStyle: "solid",
-                            borderColor: "black",
+                            borderColor: "black"
                         }}/>}
                     />
                 </MapCard>

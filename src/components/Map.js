@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SingleBrewery } from './ComponentStyles'
+import { MapInfoWindow } from './ComponentStyles'
 import { 
     GoogleMap, 
     withScriptjs, 
@@ -16,7 +16,6 @@ class MyMap extends Component {
     }
     
     handleOnClick = () => {
-   
         this.setState({
             selectedBrewery: this.props.brewery
         })
@@ -54,11 +53,11 @@ class MyMap extends Component {
                             })
                         }}
                     >
-                        <SingleBrewery>
+                        <MapInfoWindow>
                             <h4>{brewery.name}</h4>
                             <h5>Tel: { brewery.phone }</h5>
                             <a href={brewery.website_url}>{brewery.website_url}</a>
-                        </SingleBrewery>
+                        </MapInfoWindow>
                     </InfoWindow>
                 )}
                 

@@ -14,6 +14,21 @@ body {
     
     
 }
+
+form {
+    align-content: center;
+    display: grid;
+}
+
+form input {
+    border-radius: .1in;
+    
+}
+
+form  button{
+    border-radius: .1in;
+}
+
 nav {
     overflow: hidden;
     background-color: #333;
@@ -52,7 +67,9 @@ nav {
 .thumbnail iframe {
     width: 1440px;
     height: 900px;
+
 }
+
 
 .thumbnail {
     position: relative;
