@@ -87,10 +87,10 @@ class BreweryHome extends Component {
 
 // may remove this code. grabs an iframe from each brewery website 
 // but takes too long and some don't allow the iframe.
-    {/* <div className='thumbnail-container' >
-        <div className='thumbnail'>
-            <iframe src={brewery.website_url} frameBorder='0'></iframe>
-        </div>  
-    </div> */}
+    // {/* <div className='thumbnail-container' >
+    //     <div className='thumbnail'>
+    //         <iframe src={brewery.website_url} frameBorder='0'></iframe>
+    //     </div>  
+    // </div> */}
 
 export default BreweryHome
