@@ -1,5 +1,6 @@
 import React,  { Component } from 'react'
 import Map from './Map'
+import Brewery from './Brewery'
 import { SingleBrewery, MapCard, AddressCard } from './ComponentStyles'
 
 
@@ -19,15 +20,7 @@ class BreweryHome extends Component {
                     </div>  
                 </div> */}
                 <SingleBrewery>
-                    <h3>{brewery.name}</h3>
-                    <h4>Type: {brewery.brewery_type} </h4>
-                    <AddressCard >
-                        {brewery.street}
-                        {' '}
-                        {brewery.city}
-                        {' '}
-                        {brewery.state}
-                    </AddressCard>
+                    <Brewery brewery={brewery}/>
                 </SingleBrewery>
                 <MapCard>  
                     <Map 

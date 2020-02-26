@@ -8,7 +8,7 @@ class Brewery extends Component {
         const {brewery} = this.props
 
         return (   
-            <div>
+            <>
                 <h3>{brewery.name}</h3>
                 <h4>Type: {brewery.brewery_type} </h4>
                 <AddressCard >
@@ -18,7 +18,7 @@ class Brewery extends Component {
                     {' '}
                     {brewery.state}
                 </AddressCard>
-            </div>
+            </>
         )
     }
 }

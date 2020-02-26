@@ -15,7 +15,7 @@ class LoginInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        // this.logInUser(this.state)
+        // LoginUser(this.state)
         this.setState({
             email: '',
             password: ''
@@ -43,11 +43,7 @@ class LoginInput extends Component {
                         onChange={e => this.handleInputChange(e)}
                     >
                     </input>
-                    <button 
-                        type="submit"
-                    > 
-                        Log In 
-                    </button>
+                    <button type="submit" > Log In </button>
                 </form>
             </LoginCard>
         )
