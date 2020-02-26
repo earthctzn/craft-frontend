@@ -1,7 +1,7 @@
 import React,  { Component } from 'react'
 import Map from './Map'
 import Brewery from './Brewery'
-import { SingleBrewery, MapCard, AddressCard } from './ComponentStyles'
+import { SingleBrewery, MapCard } from './ComponentStyles'
 
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
@@ -14,11 +14,6 @@ class BreweryHome extends Component {
         const { brewery } = this.props
         return (
             <>
-                {/* <div className='thumbnail-container' >
-                    <div className='thumbnail'>
-                        <iframe src={brewery.website_url} frameBorder='0'></iframe>
-                    </div>  
-                </div> */}
                 <SingleBrewery>
                     <Brewery brewery={brewery}/>
                 </SingleBrewery>
@@ -45,5 +40,14 @@ class BreweryHome extends Component {
         )
     }
 }
+
+
+// may remove this code. grabs an iframe from each brewery website 
+// but takes too long and some don't allow the iframe.
+    {/* <div className='thumbnail-container' >
+        <div className='thumbnail'>
+            <iframe src={brewery.website_url} frameBorder='0'></iframe>
+        </div>  
+    </div> */}
 
 export default BreweryHome

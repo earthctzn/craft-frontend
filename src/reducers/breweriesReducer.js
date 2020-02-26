@@ -15,7 +15,6 @@ export default function breweriesReducer(state = {breweriesArr: [], brewery: [],
             }
 
         case "SELECTED_BREWERY":
-            console.log(action.payload, 'in reducer')
             return {
                 ...state, brewery: action.payload
             }
