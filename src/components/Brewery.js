@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { AddressCard } from './ComponentStyles'
+import ReviewInput from './ReviewInput'
 
 class Brewery extends Component {
 
