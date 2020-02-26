@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { LoginCard } from './ComponentStyles'
+import { SignupUser } from '../actions/SignupAction'
 
 class SignupInput extends Component {
     state = {
@@ -17,7 +18,7 @@ class SignupInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        // this.signuUpUser(this.state)
+        SignupUser(this.state)
         this.setState({
             username: '',
             email: '',
@@ -29,6 +30,7 @@ class SignupInput extends Component {
     render() {
         return (
             <LoginCard >
+                <h3>Signup below:</h3>
                 <form onSubmit={this.handleOnSubmit}>
                     <input
                         id='username'
@@ -48,7 +50,7 @@ class SignupInput extends Component {
                     </input>
                     <input 
                         id="password"
-                        type="text" 
+                        type="password" 
                         placeholder="password"
                         value={this.state.password}
                         onChange={e => this.handleInputChange(e)}
@@ -56,7 +58,7 @@ class SignupInput extends Component {
                     </input>
                     <input
                         id="password_confirmation"
-                        type="text" 
+                        type="password" 
                         placeholder="password confirmation"
                         value={this.state.password_confirmation}
                         onChange={e => this.handleInputChange(e)}

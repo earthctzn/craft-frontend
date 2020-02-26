@@ -25,7 +25,7 @@ import styled from 'styled-components'
         border-style: solid;
         border-color: black;
     `
-    const MapInfoWindow = styled.div`
+    const InfoWindowContent = styled.div`
         background-color: rgba(248, 243, 243, 0.4);
         color: darkred;
         display: inline-block;
@@ -33,8 +33,7 @@ import styled from 'styled-components'
         padding: 10px;
         margin: 10px;
         border-radius: .3in;
-
-`
+    `
     const AddressCard = styled.div`
         background-color: rgba(248, 243, 243, 0.0);
         color: darkred;
@@ -60,4 +59,4 @@ import styled from 'styled-components'
         border-color: black;
 
     `
-export {BreweryCard, AddressCard, SingleBrewery, MapCard, LoginCard, MapInfoWindow}
+export {BreweryCard, AddressCard, SingleBrewery, MapCard, LoginCard, InfoWindowContent }

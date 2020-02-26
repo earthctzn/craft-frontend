@@ -17,6 +17,7 @@ import Nav from './components/Nav'
 class App extends Component {
 
   componentDidMount() { 
+    // fetch('http://localhost:3000/api/v1/cookiefy')
     this.props.fetchBreweries()
   }
 

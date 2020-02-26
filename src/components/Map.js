@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MapInfoWindow } from './ComponentStyles'
+import { InfoWindowContent } from './ComponentStyles'
 import { 
     GoogleMap, 
     withScriptjs, 
@@ -53,11 +53,11 @@ class MyMap extends Component {
                             })
                         }}
                     >
-                        <MapInfoWindow>
+                        <InfoWindowContent>
                             <h4>{brewery.name}</h4>
                             <h5>Tel: { brewery.phone }</h5>
                             <a href={brewery.website_url}>{brewery.website_url}</a>
-                        </MapInfoWindow>
+                        </InfoWindowContent>
                     </InfoWindow>
                 )}
                 

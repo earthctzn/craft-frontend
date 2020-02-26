@@ -10,19 +10,22 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
     background-attachment: fixed;
-    height: fit-content;
-    
-    
+    height: fit-content;  
 }
 
 form {
     align-content: center;
     display: grid;
 }
+button {
+    background-color: darkred;
+    color: white;
+}
 
 form input {
     border-radius: .1in;
-    
+    background-color: darkred; 
+    color: white;   
 }
 
 form  button{

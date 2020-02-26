@@ -15,8 +15,8 @@ export const fetchBreweries = () => {
                 }
                 const breweryData = await response.json()
                 dispatch(setBreweries(breweryData))
-        }catch{
-            return 'error in fetch'
+        }catch(data){
+            return {errors: data}
         }
     }
 }
