@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { LoginCard } from './ComponentStyles'
 import { connect } from 'react-redux'
 import { ErrorComponent } from './ErrorComponent';
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -10,7 +11,16 @@ class SignupInput extends Component {
         username: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        shouldRedirect: false
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.user && !prevProps.user) {
+           this.setState({
+               shouldRedirect: true
+           })
+        }
     }
 
     renderErrors = () => {
@@ -33,6 +43,7 @@ class SignupInput extends Component {
             password_confirmation: ''
         })
         this.props.clearErrors()
+
     }
     signupUser =  async (user) => {
    
@@ -71,7 +82,10 @@ class SignupInput extends Component {
     };
 
     render() {
-        return (
+        return this.state.shouldRedirect ? 
+         (<Redirect to="/home" /> ) 
+         : 
+         (
             <>
                 <LoginCard >
                     <h3>Signup below:</h3>
@@ -120,9 +134,12 @@ class SignupInput extends Component {
     }
 }
 
+
+
 const mapStateToProps = state => {
     return {
-        errors: state.users.formErrors
+        errors: state.users.formErrors,
+        user: state.users.user
     }
 } 
 

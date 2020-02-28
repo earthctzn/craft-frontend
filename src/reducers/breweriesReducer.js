@@ -1,4 +1,4 @@
-export default function breweriesReducer(state = {breweriesArr: [], brewery: [], loading: false}, action) {
+export default function breweriesReducer(state = {breweriesArr: [], brewery: {}, loading: false}, action) {
     switch(action.type) {
         case "LOADING_BREWERIES":
             return {
@@ -10,7 +10,7 @@ export default function breweriesReducer(state = {breweriesArr: [], brewery: [],
         case "ADD_BREWERIES":
             return {
                 ...state, 
-                breweriesArr: action.breweries,
+                breweriesArr: action.payload,
                 loading: false
             }
 

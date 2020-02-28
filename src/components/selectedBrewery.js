@@ -8,8 +8,10 @@ import BreweryHome from './BreweryHome'
 class SelectedBrewery extends Component {
 
 
-    renderBrewery = () => {
-        const { brewery } = this.props
+    render(){
+        console.log(this.props.breweries.breweriesArr)        
+        const  brewery  = this.props.breweries.breweriesArr.find( brewery => brewery.id === this.props.match.params.id) 
+        debugger
         return(
             <>
                 <BreweryHome brewery={brewery}/>
@@ -17,16 +19,11 @@ class SelectedBrewery extends Component {
         )   
     }
 
-    render() {
-        return (
-            this.renderBrewery()
-        )
-    }
 
 }
 const mapStateToProps = state => {
     return {
-        brewery: state.breweries.brewery
+        breweries: state.breweries
     }
 }
 

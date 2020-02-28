@@ -21,6 +21,8 @@ form {
 button {
     background-color: darkred;
     color: white;
+    border-radius: .1in;
+    font-size: medium;
     margin-left: auto;
     margin-right: auto;
 }
@@ -52,11 +54,10 @@ nav {
     overflow: hidden;
     background-color: #333;
     position: fixed;
-    justify-content: space-around;
     top: 0;
+    left: 0;
     min-height: .5vh;
-    width: 99.2%;
-    border-radius: .1in;
+    width: 100%;
     z-index: 10;
 }
 
@@ -64,11 +65,9 @@ nav {
     width: 40%;
     display: flex;
     color: #f2f2f2;
-    justify-content: space-around;
-    text-align: center;
-    
+    justify-content: space-evenly;
     list-style: none;
-    border-radius: .5in;
+    border-radius: .3in;
 }
 
 .nav-link {

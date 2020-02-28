@@ -1,13 +1,13 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import  Brewery from './Brewery'
-import { BreweryCard } from './ComponentStyles'
+import  Brewery from '../components/Brewery'
+import { BreweryCard } from '../components/ComponentStyles'
 import { Redirect } from 'react-router-dom'
 
 
 
-class BreweriesList extends Component {
+class BreweriesContainer extends Component {
 
     state = {
         toSelectedBrewery: false
@@ -22,7 +22,8 @@ class BreweriesList extends Component {
     }
 
     renderBrewery = (props) => {
-        if (this.state.toSelectedBrewery === true) {
+
+        if (this.state.toSelectedBrewery) {
             return  <Redirect to='/selected-brewery'/>
         } 
         return props.all.breweriesArr.map(brewery => {
@@ -47,6 +48,8 @@ class BreweriesList extends Component {
 
 }
 
+
+
 const mapStateToProps = state => {
     return {
         all: state.breweries
@@ -61,4 +64,6 @@ const mapDispatchToProps = dispatch => {
     })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BreweriesList)
+export default connect(mapStateToProps, mapDispatchToProps)(BreweriesContainer)
+
+

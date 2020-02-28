@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchReviews } from '../actions/reviewActions'
 
 class ReviewInput extends Component {
     state = {
@@ -15,8 +17,9 @@ class ReviewInput extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        //call to submit action here
+        // console.log(this.props)
         //need a POST fetch action to the api/v1/reviews/create route.
+        
         this.setState({
             revContent: '',
             brewry: null
@@ -32,10 +35,12 @@ class ReviewInput extends Component {
                     value={ this.state.revContent }
                     onChange={ e => this.handleOnChange(e) }
                 ></textarea>
-                <button type="submit"> Submit </button>
+                <button type="submit" onSubmit={e => this.handleSubmit(e)}> Submit </button>
             </form>
         )
     }
 }
 
-export default ReviewInput
+
+
+export default connect(null, {fetchReviews})(ReviewInput)

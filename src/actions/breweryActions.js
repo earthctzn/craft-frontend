@@ -1,6 +1,6 @@
 
 const setBreweries = ( breweries ) => {
-    return { type: 'ADD_BREWERIES', breweries: breweries }
+    return { type: 'ADD_BREWERIES', payload: breweries }
 }
 
 
