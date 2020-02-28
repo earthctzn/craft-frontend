@@ -3,8 +3,10 @@ import './app.css'
 import { connect } from 'react-redux'
 import BreweryContainer from './containers/BreweryContainer';
 import LoginInput from './components/LoginInput';
+import Welcome from './components/Welcome';
 import SignupInput from './components/SignupInput';
 import { fetchBreweries } from './actions/breweryActions'
+import Home from './components/Home'
 import { 
   BrowserRouter as Router, 
   Switch, 
@@ -36,6 +38,9 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/">
+              <Welcome />
+            </Route>
+            <Route path="/breweries" >
               <BreweryContainer />
             </Route>
             <Route path="/login" >
@@ -46,6 +51,9 @@ class App extends Component {
             </Route>
             <Route path="/selected-brewery" >
               <SelectedBrewery />
+            </Route>
+            <Route path="/home" >
+              <Home />
             </Route>
 
             

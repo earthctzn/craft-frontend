@@ -2,6 +2,7 @@
     font-family: sans-serif;
     text-align: center;
     margin-top: 70px;
+
 }
 
 body {
@@ -20,16 +21,31 @@ form {
 button {
     background-color: darkred;
     color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+textarea {
+    border-radius: 0.1in;
+    background-color: rgba(248, 245, 245);
+    box-shadow: 1px 1px darkred;
+    font-size: large;
+    text-shadow: 2px 2px 5px darkred;
 }
 
 form input {
     border-radius: .1in;
-    background-color: darkred; 
-    color: white;   
+    background-color: rgba(248, 245, 245);
+    font-size: medium;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 form  button{
     border-radius: .1in;
+    font-size: medium;
 }
 
 nav {
@@ -42,7 +58,6 @@ nav {
     width: 99.2%;
     border-radius: .1in;
     z-index: 10;
-   
 }
 
 .nav-links {
@@ -67,37 +82,3 @@ nav {
     border-radius: .2em;
 }
 
-.thumbnail iframe {
-    width: 1440px;
-    height: 900px;
-
-}
-
-
-.thumbnail {
-    position: relative;
-    -ms-zoom: 0.25;
-    -moz-transform: scale(0.75);
-    -moz-transform-origin: 0 0;
-    -o-transform: scale(0.75);
-    -o-transform-origin: 0 0;
-    -webkit-transform: scale(0.75);
-    -webkit-transform-origin: 0 0;
-}
-
-.thumbnail:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.thumbnail-container {
-    width: calc(1440px * 0.75);
-    height: calc(900px * 0.75);
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}

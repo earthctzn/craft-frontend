@@ -22,65 +22,36 @@ class BreweryHome extends Component {
 
     render() {
         const { brewery } = this.props
-        if (this.state.showRevInput === true) {
-            return (
-                <>
-                    <SingleBrewery>
-                        <Brewery brewery={brewery} />
-                        <ReviewInput brewery={brewery} />
-                    </SingleBrewery>
+        return (
+            <>
+                <SingleBrewery>
+                    <Brewery brewery={brewery} />
+                    {this.state.showRevInput ? <ReviewInput brewery={brewery} /> : null}
+                    {this.state.showRevInput === false ? <button onClick={this.handleOnClick} > Leave a Review </button> : null }
+                </SingleBrewery>
 
-                    <MapCard>  
-                        <Map 
-                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 
-                            loadingElement={<div style={{ height: "100%" }}/>}
-                            containerElement={<div style={{ height: "100%" }}/>}
-                            brewery={brewery}
-                            defaultCenter={{
-                                lat: `${ brewery.latitude}`, 
-                                lng: `${ brewery.longitude}`
-                            }} 
-                            mapElement={<div style={{ 
-                                height: "80%", 
-                                width: "98.7%",
-                                borderRadius: ".3in",
-                                borderStyle: "solid",
-                                borderColor: "black"
-                            }}/>}
-                        />
-                    </MapCard>
-                </>
-            )
-        }else {
-            return (
-                <>
-                    <SingleBrewery>
-                        <Brewery brewery={brewery}/>
-                        <button onClick={this.handleOnClick} > Leave a Review </button>
-                    </SingleBrewery>
-
-                    <MapCard>  
-                        <Map 
-                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 
-                            loadingElement={<div style={{ height: "100%" }}/>}
-                            containerElement={<div style={{ height: "100%" }}/>}
-                            brewery={brewery}
-                            defaultCenter={{
-                                lat: `${ brewery.latitude}`, 
-                                lng: `${ brewery.longitude}`
-                            }} 
-                            mapElement={<div style={{ 
-                                height: "80%", 
-                                width: "98.7%",
-                                borderRadius: ".3in",
-                                borderStyle: "solid",
-                                borderColor: "black"
-                            }}/>}
-                        />
-                    </MapCard>
-                </>
-            )
-        }
+                <MapCard>  
+                    <Map 
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 
+                        loadingElement={<div style={{ height: "100%" }}/>}
+                        containerElement={<div style={{ height: "100%" }}/>}
+                        brewery={brewery}
+                        defaultCenter={{
+                            lat: `${ brewery.latitude}`, 
+                            lng: `${ brewery.longitude}`
+                        }} 
+                        mapElement={<div style={{ 
+                            height: "80%", 
+                            width: "98.7%",
+                            borderRadius: ".3in",
+                            borderStyle: "solid",
+                            borderColor: "black"
+                        }}/>}
+                    />
+                </MapCard>
+            </>
+        )
+           
     }
 }
 

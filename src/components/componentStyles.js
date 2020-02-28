@@ -35,21 +35,23 @@ import styled from 'styled-components'
         border-radius: .3in;
     `
     const AddressCard = styled.div`
-        background-color: rgba(248, 243, 243, 0.0);
+        background-color: rgba(248, 243, 243 0.0);
         color: darkred;
         text-allign: center;
         font-size: 80%;
     `
     const MapCard = styled.div`
-        width: 100vw;
-        height: 100vh;
+        width: 50vw;
+        height: 50vh;
         position: center;
+        margin-left: auto;
+        margin-right: auto;
     `
     const LoginCard = styled.div`
         background-color: rgba(248, 243, 243, 0.4);
         color: darkred;
-        width: 2in;
-        height: in;
+        width: 250px;
+
         display: inline-block;
         display: inline-table;
         padding: 10px;
@@ -59,4 +61,25 @@ import styled from 'styled-components'
         border-color: black;
 
     `
-export {BreweryCard, AddressCard, SingleBrewery, MapCard, LoginCard, InfoWindowContent }
+    const ErrorCard = styled.p`
+        background-color: rgba(248, 243, 243, 0.4);
+        color: darkred;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        border-radius: .3in;
+        border-style: solid;
+        border-color: black;
+        margin-left: auto;
+        margin-right: auto;
+    `
+export {
+    BreweryCard, 
+    AddressCard, 
+    SingleBrewery, 
+    MapCard, 
+    LoginCard, 
+    InfoWindowContent, 
+    ErrorCard
+}

@@ -46,11 +46,13 @@ class BreweriesList extends Component {
     }
 
 }
+
 const mapStateToProps = state => {
     return {
         all: state.breweries
     }
 }
+
 const mapDispatchToProps = dispatch => {
     return ({
         selectedBrewery: (breweryObj) => dispatch({

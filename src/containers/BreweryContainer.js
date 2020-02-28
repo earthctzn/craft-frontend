@@ -6,7 +6,7 @@ import BreweriesList from '../components/BreweriesList'
 class BreweryContainer extends Component {
     render() {
         return (
-            <BreweriesList all={this.props.all}/>
+            <BreweriesList />
         )
     }
 }
