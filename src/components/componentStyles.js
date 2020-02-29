@@ -13,9 +13,10 @@ import styled from 'styled-components'
         border-color: black;
     `
     const SingleBrewery = styled.div`
-        background-color: rgba(248, 243, 243, 0.4);
+        background-color: rgba(248, 243, 243, 0.4);6y
         color: darkred;
-        width: 2in;
+        width: 50vw;
+        heigth: 40vh;
         height: in;
         display: inline-block;
         display: inline-table;

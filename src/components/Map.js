@@ -55,6 +55,7 @@ class MyMap extends Component {
                     >
                         <InfoWindowContent>
                             <h4>{brewery.name}</h4>
+                            <p>{brewery.street}{" "}{ brewery.city}{" "}{brewery.state}{" "}</p>
                             <h5>Tel: { brewery.phone }</h5>
                             <a href={brewery.website_url}>{brewery.website_url}</a>
                         </InfoWindowContent>

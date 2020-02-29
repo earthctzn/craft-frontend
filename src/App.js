@@ -30,14 +30,16 @@ import {
 class App extends Component {
   
 
-  componentDidMount() { 
+  componentDidMount() {
+    this.loading()
     // fetch('http://localhost:3000/api/v1/cookiefy')
     this.props.fetchBreweries()
     this.props.fetchReviews()
+    
   }
 
   loading = () => {
-    if(this.props.loading) {
+    if(this.props.store.breweries.loading || this.props.store.reviews.loading) {
       return (
         <h1>Loading...</h1>
       )
@@ -48,7 +50,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">          
-          {this.props.users == null ? <Nav /> : <UserNav/> }
+          {this.props.user ? <UserNav/> : <Nav /> }
           <Switch>
 
             <Route exact path="/">
@@ -90,7 +92,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return ({
-    loading: state.loading,
+    store: state,
     user: state.users.user
   })
 }

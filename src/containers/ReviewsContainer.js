@@ -12,7 +12,6 @@ class ReviewsContainer extends Component {
 
 
     render() {
-
         return (
           this.renderReview()
         )
