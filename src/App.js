@@ -47,9 +47,6 @@ class App extends Component {
             <Route exact path="/">
               <Welcome />
             </Route>
-            <Route path="/selected-brewery" >
-              <SelectedBrewery />
-            </Route>
             <Route path="/breweries/:id/reviews" >
               <ReviewsContainer />
             </Route>

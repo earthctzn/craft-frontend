@@ -22,9 +22,11 @@ class BreweriesContainer extends Component {
     }
 
     renderBrewery = (props) => {
+        console.log(props)
+        let id = props.all.brewery.id
 
         if (this.state.toSelectedBrewery) {
-            return  <Redirect to='/selected-brewery'/>
+            return  <Redirect to={`/breweries/${id}`}/>
         } 
         return props.all.breweriesArr.map(brewery => {
             return(

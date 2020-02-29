@@ -41,8 +41,8 @@ import styled from 'styled-components'
         font-size: 80%;
     `
     const MapCard = styled.div`
-        width: 50vw;
-        height: 50vh;
+        width: 70vw;
+        height: 60vh;
         position: center;
         margin-left: auto;
         margin-right: auto;

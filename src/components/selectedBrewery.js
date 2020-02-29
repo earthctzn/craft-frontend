@@ -8,10 +8,9 @@ import BreweryHome from './BreweryHome'
 class SelectedBrewery extends Component {
 
 
-    render(){
-        console.log(this.props.breweries.breweriesArr)        
-        const  brewery  = this.props.breweries.breweriesArr.find( brewery => brewery.id === this.props.match.params.id) 
-        debugger
+    render(){     
+        const  brewery  = this.props.breweries.brewery
+        // debugger
         return(
             <>
                 <BreweryHome brewery={brewery}/>

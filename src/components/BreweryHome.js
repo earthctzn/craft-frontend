@@ -41,8 +41,8 @@ class BreweryHome extends Component {
                             lng: `${ brewery.longitude}`
                         }} 
                         mapElement={<div style={{ 
-                            height: "80%", 
-                            width: "98.7%",
+                            height: "100%", 
+                            width: "100%",
                             borderRadius: ".3in",
                             borderStyle: "solid",
                             borderColor: "black"
