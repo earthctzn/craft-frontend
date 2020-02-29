@@ -6,14 +6,25 @@ import BreweryHome from './BreweryHome'
 
 
 class SelectedBrewery extends Component {
+    
+    // renderBrewHome = ({selectedBrewery}) => {
+    //     console.log("selected brewery props", this.props)
+    //     return selectedBrewery ? (
+    //         <BreweryHome brewery={selectedBrewery}/>
+    //     ) : (
+    //         <div><h1>Loading...</h1></div>
+    //     )
+    // }
 
 
     render(){     
-        const  brewery  = this.props.breweries.brewery
+        console.log(this.props.breweries.brewery)
+        const brewery = this.props.breweries.brewery
         // debugger
         return(
             <>
                 <BreweryHome brewery={brewery}/>
+               {/* {this.renderBrewHome()}  */}
             </>
         )   
     }

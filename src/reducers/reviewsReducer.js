@@ -20,6 +20,7 @@ export default function reviewsReducer(state = {reviewsArr: [], review: [], load
             }
             
         case "SET_REVIEWS":
+            console.log(action.payload)
             return {
                 ...state, 
                 reviewsArr: action.payload,

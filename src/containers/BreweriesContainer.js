@@ -10,20 +10,22 @@ import { Redirect } from 'react-router-dom'
 class BreweriesContainer extends Component {
 
     state = {
-        toSelectedBrewery: false
+        toSelectedBrewery: false,
+        id: ''
     }
 
     handleOnClick(e, brewery){
         e.preventDefault()
         this.props.selectedBrewery(brewery);
         this.setState({
-            toSelectedBrewery: true
+            toSelectedBrewery: true,
+            id: brewery.id
         })  
     }
 
     renderBrewery = (props) => {
-        console.log(props)
-        let id = props.all.brewery.id
+        console.log(this.state.id)
+        let id = this.state.id
 
         if (this.state.toSelectedBrewery) {
             return  <Redirect to={`/breweries/${id}`}/>

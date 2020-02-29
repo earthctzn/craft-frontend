@@ -82,7 +82,6 @@ class SignupInput extends Component {
     };
 
     render() {
-        console.log('if this is true we should redirect', this.props.user)
         return this.state.shouldRedirect ? 
          (<Redirect to="/home" /> ) 
          : 

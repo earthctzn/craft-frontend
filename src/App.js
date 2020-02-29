@@ -1,3 +1,47 @@
+// import React, { Component } from 'react';
+// import './app.css'
+// import { connect } from 'react-redux'
+
+// //Containers
+// import BreweriesContainer from './containers/BreweriesContainer';
+// import ReviewsContainer from './containers/ReviewsContainer'
+
+// //Components
+// import Nav from './components/Nav'
+// import Welcome from './components/Welcome';
+// import Home from './components/Home'
+// import LoginInput from './components/LoginInput';
+// import SelectedBrewery from './components/SelectedBrewery';
+// import UserNav from './components/UserNav'
+// import SignupInput from './components/SignupInput';
+
+// //Actions
+// import { fetchBreweries } from './actions/breweryActions'
+// import { fetchReviews } from './actions/reviewActions'
+
+// import { 
+//   BrowserRouter as Router, 
+//   Switch, 
+//   Route
+// } from 'react-router-dom'
+
+
+
+// class App extends Component {
+  
+
+//   componentDidMount() {
+//     this.loading()
+//     // fetch('http://localhost:3000/api/v1/cookiefy')
+//     this.props.fetchBreweries()
+//     this.props.fetchReviews()
+//     console.log(this.props.store)
+    
+//   }
+
+//   loading = () => {
+//     if(this.props.store.breweries.loading || this.props.store.reviews.loading) {
+
 import React, { Component } from 'react';
 import './app.css'
 import { connect } from 'react-redux'
@@ -35,6 +79,7 @@ class App extends Component {
     // fetch('http://localhost:3000/api/v1/cookiefy')
     this.props.fetchBreweries()
     this.props.fetchReviews()
+    console.log(this.props.store)
     
   }
 
