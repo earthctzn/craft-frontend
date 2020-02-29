@@ -44,21 +44,27 @@ class App extends Component {
         <div className="App">
           <Nav />
           <Switch>
+            
             <Route exact path="/">
               <Welcome />
             </Route>
+
             <Route path="/breweries/:id/reviews" >
               <ReviewsContainer />
             </Route>
-            <Route path="/breweries/:id" render={props => (
-              <SelectedBrewery {...props} />
-            )}/>
+
+            <Route path="/breweries/:id">
+              <SelectedBrewery />
+            </Route>
+
             <Route path="/breweries" >
               <BreweriesContainer />
             </Route>
+
             <Route path="/login" >
               <LoginInput />
             </Route>
+
             <Route path="/signup" >
               <SignupInput />
             </Route>
