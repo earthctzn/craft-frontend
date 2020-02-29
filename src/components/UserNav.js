@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const userNav = () =>  {
+const UserNav = () =>  {
      
     return (
         <nav>
@@ -19,4 +19,4 @@ const userNav = () =>  {
 }
 
 
-export default userNav
+export default UserNav

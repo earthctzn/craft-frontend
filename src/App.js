@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import './app.css'
 import { connect } from 'react-redux'
+
+//Containers
 import BreweriesContainer from './containers/BreweriesContainer';
-// import Review from './components/Review'
-import LoginInput from './components/LoginInput';
-import Welcome from './components/Welcome';
 import ReviewsContainer from './containers/ReviewsContainer'
-import SelectedBrewery from './components/SelectedBrewery';
+
+//Components
 import Nav from './components/Nav'
-// import userNav from './components/userNav'
+import Welcome from './components/Welcome';
+import Home from './components/Home'
+import LoginInput from './components/LoginInput';
+import SelectedBrewery from './components/SelectedBrewery';
+import UserNav from './components/UserNav'
 import SignupInput from './components/SignupInput';
+
+//Actions
 import { fetchBreweries } from './actions/breweryActions'
 import { fetchReviews } from './actions/reviewActions'
-import Home from './components/Home'
+
 import { 
   BrowserRouter as Router, 
   Switch, 
@@ -41,10 +47,10 @@ class App extends Component {
   render(){
     return (
       <Router>
-        <div className="App">
-          <Nav />
+        <div className="App">          
+          {this.props.users == null ? <Nav /> : <UserNav/> }
           <Switch>
-            
+
             <Route exact path="/">
               <Welcome />
             </Route>
@@ -85,7 +91,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return ({
     loading: state.loading,
-    user: state.users
+    user: state.users.user
   })
 }
 
