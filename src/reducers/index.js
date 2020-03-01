@@ -8,7 +8,7 @@ import reviewsReducer from './reviewsReducer'
 const rootReducer = combineReducers({
     breweries: breweriesReducer,
     users: UsersReducer,
-    // sessions: SessionsReducer
+    sessions: SessionsReducer,
     reviews: reviewsReducer
 })
 

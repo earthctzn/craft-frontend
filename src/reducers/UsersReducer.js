@@ -1,11 +1,17 @@
+import {
+    SET_USER,
+    ADD_ERRORS,
+    CLEAR_ERRORS
+} from '../actionTypes/index'
+
 export default function UsersReducer(state= {user: null, formErrors: []}, action) {
     switch(action.type) {
-        case "SET_USER":
+        case SET_USER:
             return {
                   ...state,
                   user: action.payload
                 }
-        case "ADD_ERRORS":
+        case ADD_ERRORS:
             
              let errors = action.payload.errors.map(err => {
                 return  err
@@ -13,7 +19,7 @@ export default function UsersReducer(state= {user: null, formErrors: []}, action
             return {
                 ...state, formErrors: errors
             }
-        case "CLEAR_ERRORS":
+        case CLEAR_ERRORS:
             return {
                 ...state,
                 formErrors: []

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Review from '../components/Review'
-// import Brewery from '../components/Brewery'
 
 
 class ReviewsContainer extends Component {
