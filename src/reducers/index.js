@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import breweriesReducer from './breweriesReducer'
 import UsersReducer from './UsersReducer'
 import reviewsReducer from './reviewsReducer'
-// import SessionsReducer from './SessionsReducer'
+import SessionsReducer from './SessionsReducer'
 
 
 const rootReducer = combineReducers({

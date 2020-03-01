@@ -1,4 +1,4 @@
-export default function SessionsReducer(state= {cookie=""}, action) {
+export default function SessionsReducer(state = {cookie: ""}, action) {
     switch(action.type) {
         case "SET_COOKIE":
             return {
