@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { SingleBrewery } from './ComponentStyles'
+import { WelcomeCard } from './ComponentStyles'
 
 class Home extends Component {
     state = {
@@ -16,14 +16,16 @@ class Home extends Component {
         }
     }
     render() {
+        // debugger
         console.log(this.state.isLoggedIn)
         return this.state.isLoggedIn ? 
         (
-            <SingleBrewery>
+            <WelcomeCard>
+                
                 <h1>
                     Hey there {this.props.user.username}
                 </h1>
-            </SingleBrewery>
+            </WelcomeCard>
 
         )
         :

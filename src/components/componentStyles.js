@@ -63,7 +63,7 @@ import styled from 'styled-components'
     `
     const WelcomeCard = styled.div`
         color: darkred;
-        background-color: rgba(248, 243, 243, 0.4);
+        background-color: rgba(248, 243, 243, 0.6);
         border-radius: .3in;
         border-style: solid;
         border-color: black;
