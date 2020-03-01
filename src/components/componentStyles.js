@@ -52,7 +52,6 @@ import styled from 'styled-components'
         background-color: rgba(248, 243, 243, 0.4);
         color: darkred;
         width: 250px;
-
         display: inline-block;
         display: inline-table;
         padding: 10px;
@@ -61,6 +60,15 @@ import styled from 'styled-components'
         border-style: solid;
         border-color: black;
 
+    `
+    const WelcomeCard = styled.div`
+        color: darkred;
+        background-color: rgba(248, 243, 243, 0.4);
+        border-radius: .3in;
+        border-style: solid;
+        border-color: black;
+        margin-left: auto;
+        margin-right: auto;
     `
     const ErrorCard = styled.p`
         background-color: rgba(248, 243, 243, 0.4);
@@ -82,5 +90,6 @@ export {
     MapCard, 
     LoginCard, 
     InfoWindowContent, 
-    ErrorCard
+    ErrorCard,
+    WelcomeCard
 }

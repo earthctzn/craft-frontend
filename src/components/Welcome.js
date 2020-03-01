@@ -1,11 +1,12 @@
 import React from 'react'
+import { WelcomeCard } from './ComponentStyles'
 
 export const Home = () => {
     return (
-        <div>
+        <WelcomeCard>
             <h1>Craft</h1>
             <h2>Login or Signup to start!</h2>
-        </div>
+        </WelcomeCard>
     )
 }
 
