@@ -28,8 +28,9 @@ class BreweryHome extends Component {
                     <Brewery brewery={brewery} />
                     {this.state.showRevInput ? <ReviewInput brewery={brewery} /> : null}
                     {!this.state.showRevInput ? <button onClick={this.handleOnClick} > Leave a Review </button> : null }
+                    {brewery.reviews ? <h3>{brewery.reviews[0]}</h3> : null }
                 </SingleBrewery>
-
+                
                 <MapCard>  
                     <Map 
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 

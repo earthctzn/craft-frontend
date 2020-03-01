@@ -1,9 +1,8 @@
 export default function UsersReducer(state= {user: null, formErrors: []}, action) {
     switch(action.type) {
         case "SET_USER":
-            console.log("inside set user reducer", action.payload)
-                return {
-                    ...state,
+            return {
+                  ...state,
                   user: action.payload
                 }
         case "ADD_ERRORS":

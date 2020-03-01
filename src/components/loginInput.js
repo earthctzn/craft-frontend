@@ -61,12 +61,11 @@ class LoginInput extends Component {
             const userObj = await response.json()
             if (userObj.errors) {
                 this.props.setErrors(userObj)
-            }else {
-                console.log(userObj)
+            }else{
                 this.props.setUser(userObj)
             }
         } catch(data) {
-            console.log(data)
+            alert(data)
         };
     
     };

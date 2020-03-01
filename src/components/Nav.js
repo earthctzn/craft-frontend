@@ -9,10 +9,8 @@ const Nav = () =>  {
     return (
         <nav>
             <ul className="nav-links">
-                <Link to="/home" className='nav-link'><li>Home</li></Link>
-                <Link to="/login" className='nav-link'><li>Login</li></Link>
-                <Link to="/signup" className='nav-link'><li>Signup</li></Link>
-                <Link to="/logout" className='nav-link'><li>logout</li></Link>
+                <Link to="/login" className='nav-link'><button>Login</button></Link>
+                <Link to="/signup" className='nav-link'><button>Signup</button></Link>
             </ul>
         </nav>
     )

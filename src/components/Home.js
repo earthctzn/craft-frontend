@@ -1,18 +1,41 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { SingleBrewery } from './ComponentStyles'
 
 class Home extends Component {
+    state = {
+        isLoggedIn: false
+    }
 
+    componentWillMount() {
+        if(this.props.user) {
+            this.setState({
+                isLoggedIn: true
+            })
+        }
+    }
     render() {
-        return (
-            <div>
-                <h1>This is the home page</h1>
-                <Link to="/breweries" > <button>Breweries</button></Link>
-                <Link to="/breweries/:id/review"></Link>
+        console.log(this.state.isLoggedIn)
+        return this.state.isLoggedIn ? 
+        (
+            <SingleBrewery>
+                <h1>
+                    Hey there {this.props.user.username}
+                </h1>
+            </SingleBrewery>
 
-            </div>
         )
+        :
+        (<Redirect to="/" /> ) 
+        
     }
 }
 
-export default Home
+const mapStateToProps = state => {
+    return {
+        user: state.users.user
+    }
+}
+
+export default connect(mapStateToProps)(Home)

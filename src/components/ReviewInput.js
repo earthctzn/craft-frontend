@@ -1,28 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchReviews } from '../actions/reviewActions'
+import { 
+    addReview, 
+    setReview, 
+    setReviews, 
+    createReview
+} from '../actions/reviewActions'
+
 
 class ReviewInput extends Component {
     state = {
-        revContent: '',
-        brewery: null
+        content: '',
+        brewery: null,
+        user_id: null
     }
 
     handleOnChange = (e) => {
         this.setState({
-            revContent: e.target.value,
+            content: e.target.value,
+            user_id: this.props.user.id,
             brewery: this.props.brewery
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // console.log(this.props)
-        //need a POST fetch action to the api/v1/reviews/create route.
-        
+        this.props.createReview(this.state)
         this.setState({
-            revContent: '',
-            brewry: null
+            content: '',
+            user_id: null,
+            brewery: null
         })
     }
 
@@ -30,9 +37,9 @@ class ReviewInput extends Component {
 
     render() {
         return (
-            <form onSubmit={ this.handleSubmit }>
+            <form onSubmit={e => this.handleSubmit(e) }>
                 <textarea
-                    value={ this.state.revContent }
+                    value={ this.state.content }
                     onChange={ e => this.handleOnChange(e) }
                 ></textarea>
                 <button type="submit" onSubmit={e => this.handleSubmit(e)}> Submit </button>
@@ -41,6 +48,11 @@ class ReviewInput extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.users.user,
+        brewery: state.breweries.brewery
+    }
+}
 
-
-export default connect(null, {fetchReviews})(ReviewInput)
+export default connect(mapStateToProps,{addReview, setReview, setReviews, createReview})(ReviewInput)

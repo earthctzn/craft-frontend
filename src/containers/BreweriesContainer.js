@@ -24,7 +24,7 @@ class BreweriesContainer extends Component {
     }
 
     renderBrewery = (props) => {
-        console.log(this.state.id)
+
         let id = this.state.id
 
         if (this.state.toSelectedBrewery) {
