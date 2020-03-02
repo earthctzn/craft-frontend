@@ -34,6 +34,7 @@ export const fetchReviews = () => {
                     throw response
                 }
                 const reviewData = await response.json()
+                console.log("reviewdata", reviewData)
                 dispatch(setReviews(reviewData))
         }catch(data){
                 alert(data)

@@ -4,12 +4,12 @@ const setBreweries = ( breweries ) => {
 }
 
 
-export const fetchBreweries = () => {
+export const fetchBreweries = (props) => {
 
     return async dispatch => {
         try {
             dispatch({ type: 'LOADING_BREWERIES'})
-                const response = await fetch('https://api.openbrewerydb.org/breweries')
+                const response = await fetch(`https://api.openbrewerydb.org/breweries`)
                 if (!response.ok) {
                     throw response
                 }

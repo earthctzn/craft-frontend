@@ -22,6 +22,7 @@ class BreweryHome extends Component {
 
     render() {
         const { brewery } = this.props
+        console.log(brewery)
         return (
             <>
                 <SingleBrewery>

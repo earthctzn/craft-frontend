@@ -51,6 +51,7 @@ class App extends Component {
   }
 
   render(){
+    this.loading()
     return (
       <Router>
         <div className="App">          
