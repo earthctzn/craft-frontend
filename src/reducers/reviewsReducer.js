@@ -6,7 +6,7 @@ import {
     SELECTED_REVIEW
 } from '../actionTypes/index'
 
-export default function reviewsReducer(state = {reviewsArr: [], review: [], loading: false}, action) {
+export default function reviewsReducer(state = {reviewsArr: [], review: null, loading: false}, action) {
     switch(action.type) {
         case LOADING_REVIEWS:
             return {

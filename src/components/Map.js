@@ -11,20 +11,60 @@ import {
 
 class MyMap extends Component {
 
-    state = {
-        selectedBrewery: ''        
+    constructor(props) {
+        super(props)
+        this.state = {
+            showInfoWindow: true,
+            breweries: null,
+            brewery: null     
+        }
+        this.handleOnClick = this.handleOnClick.bind(this)
+    }
+
+    renderMarker = (passedLat, passedLng) => {
+        return this.props.brewery ?
+        (  
+            <Marker
+                position={{
+                    lat: passedLat, 
+                    lng: passedLng
+                }}
+                onClick={this.handleOnClick}
+            />
+        )
+        :
+        (  this.props.breweries.map(brewery => {
+                return(
+                    <div key={Math.random()}>
+                        <Marker
+                            key={Math.random()}
+                            position={{
+                                lat: parseFloat(brewery.latitude), 
+                                lng: parseFloat(brewery.longitude) 
+                            }}
+                            onClick={()=> this.setState({ 
+                                brewery: brewery
+                            })}
+                            
+                        />   
+                    </div>
+                )
+
+            })  
+        )
     }
     
     handleOnClick = () => {
         this.setState({
-            selectedBrewery: this.props.brewery
+            showInfoWindow: true,
+            brewery: this.props.brewery
         })
     }
 
     render() {
         const passedLat = parseFloat(this.props.defaultCenter.lat) || 37.780079
         const passedLng = parseFloat(this.props.defaultCenter.lng) || -122.420174
-        const brewery = this.props.brewery
+        const brewery = this.state.brewery
         return(
             <>
                 <GoogleMap 
@@ -33,34 +73,30 @@ class MyMap extends Component {
                         lat: passedLat,
                         lng: passedLng
                     }}    
-                /> 
-                <Marker
-                    position={{
-                        lat: passedLat, 
-                        lng: passedLng
-                    }}
-                    onClick={e => this.handleOnClick(e)}
                 />
-                {this.state.selectedBrewery && (
+                
+                {this.renderMarker(passedLat, passedLng)}
+                {this.state.brewery && (
                     <InfoWindow 
+                        key={Math.random()}
                         position={{
-                            lat: passedLat,
-                            lng: passedLng
+                            lat: parseFloat(brewery.latitude),
+                            lng: parseFloat(brewery.longitude) 
                         }}
                         onCloseClick={() => {
                             this.setState({
-                                selectedBrewery: ''
+                                brewery: null
                             })
                         }}
                     >
-                        <InfoWindowContent>
+                        <InfoWindowContent key={Math.random()}>
                             <h4>{brewery.name}</h4>
                             <p>{brewery.street}{" "}{ brewery.city}{" "}{brewery.state}{" "}</p>
                             <h5>Tel: { brewery.phone }</h5>
                             <a href={brewery.website_url}>{brewery.website_url}</a>
                         </InfoWindowContent>
-                    </InfoWindow>
-                )}
+                    </InfoWindow> 
+                )} 
                 
             </>
         ) 
@@ -69,5 +105,6 @@ class MyMap extends Component {
 }
 
 const Map = withScriptjs(withGoogleMap(MyMap))
+
 
 export default Map

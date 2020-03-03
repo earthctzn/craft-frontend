@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { WelcomeCard, MapCard} from './ComponentStyles'
-import { fetchBreweries } from '../actions/breweryActions'
+import { fetchBreweriesByCity } from '../actions/breweryActions'
 import Map from './Map'
 
 
@@ -19,6 +19,7 @@ class Home extends Component {
         }
         this.getLocation = this.getLocation.bind(this)
         this.setLocation = this.setLocation.bind(this)
+        this.revGeoCodeLocation = this.revGeoCodeLocation.bind(this)
     }
 
     UNSAFE_componentWillMount() {
@@ -29,11 +30,18 @@ class Home extends Component {
         }
     }
 
+    revGeoCodeLocation() {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.lat},${this.state.lng}&sensor=false&key=${API_KEY}`)
+        .then(res => res.json())
+        .then(locData => this.props.fetchBreweriesByCity(locData.results[0].address_components[3].long_name))
+        .catch(err => alert(err))
+    }
+
 
     
     getLocation() {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(this.setLocation);
+          navigator.geolocation.getCurrentPosition(this.setLocation, this.handleLocationErrors);
         } else { 
           alert("Geolocation is not supported by this browser.");
         }
@@ -45,6 +53,8 @@ class Home extends Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         })
+        this.revGeoCodeLocation()
+        
     }
 
     renderMap() {
@@ -55,7 +65,7 @@ class Home extends Component {
                     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 
                     loadingElement={<div style={{ height: "100%" }}/>}
                     containerElement={<div style={{ height: "100%" }}/>}
-                    
+                    breweries={this.props.breweries}
                     defaultCenter={{
                         lat: `${this.state.lat}` || 37.780079,
                         lng: `${this.state.lng}` || -122.420174
@@ -72,6 +82,25 @@ class Home extends Component {
         )
         :
         (null)
+    }
+
+    handleLocationErrors(error){
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+              alert("User denied the request for Geolocation.")
+              break;
+            case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable.")
+              break;
+            case error.TIMEOUT:
+              alert("The request to get user location timed out.")
+              break;
+            case error.UNKNOWN_ERROR:
+              alert("An unknown error occurred.")
+              break;
+            default:
+              alert("An unknown error occurred.")
+        }
     }
 
     renderWelcome() {
@@ -100,8 +129,9 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.users.user
+        user: state.users.user,
+        breweries: state.breweries.breweriesArr
     }
 }
 
-export default connect(mapStateToProps, {fetchBreweries})(Home)
+export default connect(mapStateToProps, {fetchBreweriesByCity})(Home)

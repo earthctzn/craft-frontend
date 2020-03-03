@@ -3,14 +3,29 @@ import Map from './Map'
 import Brewery from './Brewery'
 import { SingleBrewery, MapCard } from './ComponentStyles'
 import ReviewInput from './ReviewInput'
-
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+ 
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
 
 
 class BreweryHome extends Component {
-    state={
-        showRevInput: false
+    constructor(props){
+        super(props)   
+        this.state= {
+            showRevInput: false,
+            isLoggedIn: false
+        }
+        this.handleOnClick = this.handleOnClick.bind(this)
+    }
+    
+    UNSAFE_componentWillMount() {
+        if(this.props.user) {
+            this.setState({
+                isLoggedIn: true
+            })
+        }
     }
 
     handleOnClick = () => {
@@ -19,17 +34,29 @@ class BreweryHome extends Component {
         })
     }
 
+    renderReviews = () => {
+        this.props.reviews.reviewsArr.map( review => {
+           return (
+                <blockquote key={review.id}>
+                    {review.content}
+                        - {review.user.username}
+                </blockquote>
+            ) 
+        })
+    }
 
     render() {
         const { brewery } = this.props
-        console.log(brewery)
-        return (
+        console.log(this.state)
+        return this.state.isLoggedIn ? 
+        (
             <>
                 <SingleBrewery>
                     <Brewery brewery={brewery} />
                     {this.state.showRevInput ? <ReviewInput brewery={brewery} /> : null}
                     {!this.state.showRevInput ? <button onClick={this.handleOnClick} > Leave a Review </button> : null }
-                    {brewery.reviews ? <h3>{brewery.reviews[0]}</h3> : null }
+                    <span>Latest Reviews</span>
+                    {this.props.review ? <h3>{this.props.review.content} - by: {this.props.review.user.username}</h3> : null }
                 </SingleBrewery>
                 
                 <MapCard>  
@@ -53,10 +80,19 @@ class BreweryHome extends Component {
                 </MapCard>
             </>
         )
+        :
+        (
+            <Redirect to='/' />
+        )
            
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.users.user,
+        review: state.reviews.review
+    }
+}
 
-
-export default BreweryHome
+export default connect(mapStateToProps)(BreweryHome)

@@ -7,13 +7,18 @@ import { Redirect } from 'react-router-dom'
 
 
 class SignupInput extends Component {
-    state = {
-        username: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        shouldRedirect: false
+
+    constructor(props) {
+        super(props)
+            this.state = {
+            username: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            shouldRedirect: false
+        }
     }
+
 
     componentDidUpdate(prevProps) {
         if(this.props.user && !prevProps.user) {

@@ -9,9 +9,21 @@ import { Redirect } from 'react-router-dom'
 
 class BreweriesContainer extends Component {
 
-    state = {
-        toSelectedBrewery: false,
-        id: ''
+    constructor(props){
+        super(props)
+        this.state = {
+            isLoggedIn: false,
+            toSelectedBrewery: false,
+            id: ''
+        }
+    }
+
+    UNSAFE_componentWillMount() {
+        if(this.props.user) {
+            this.setState({
+                isLoggedIn: true
+            })
+        }
     }
 
     handleOnClick(e, brewery){
@@ -45,8 +57,13 @@ class BreweriesContainer extends Component {
     }
 
     render() {
-        return (
+        return this.state.isLoggedIn ?
+        (
             this.renderBrewery(this.props)
+        )
+        :
+        (
+            <Redirect to='/' />
         )
     }
 
@@ -56,7 +73,8 @@ class BreweriesContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        all: state.breweries
+        all: state.breweries,
+        user: state.users.user
     }
 }
 
