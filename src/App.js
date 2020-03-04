@@ -3,31 +3,33 @@ import React, { Component } from 'react';
 import './app.css'
 
 //Store and Dispatch access
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 //Containers
 import BreweriesContainer from './containers/BreweriesContainer';
-import ReviewsContainer from './containers/ReviewsContainer'
+import ReviewsContainer from './containers/ReviewsContainer';
+import LoginContainer from './containers/LoginContainer';
 
 //Components
-import Nav from './components/Nav'
+import Nav from './components/Nav';
 import Welcome from './components/Welcome';
-import Home from './components/Home'
-import LoginInput from './components/LoginInput';
+import Home from './components/Home';
 import SelectedBrewery from './components/SelectedBrewery';
-import UserNav from './components/UserNav'
+import UserNav from './components/UserNav';
 import SignupInput from './components/SignupInput';
 
 //Actions
-import { fetchBreweries } from './actions/breweryActions'
-import { fetchReviews } from './actions/reviewActions'
+import { fetchBreweries } from './actions/breweryActions';
+import { fetchReviews } from './actions/reviewActions';
+import { getToken } from './actions/loginActions';
+import { getUser } from './actions/userActions';
 
 //Routing
 import { 
   BrowserRouter as Router, 
   Switch, 
   Route
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 
 
@@ -35,8 +37,8 @@ class App extends Component {
   
 
   componentDidMount() {
-    this.loading()
-    // fetch('http://localhost:3000/api/v1/cookiefy')
+    this.props.getUser()
+    this.props.getToken()
     this.props.fetchBreweries()
     this.props.fetchReviews()
     
@@ -59,7 +61,7 @@ class App extends Component {
           <Switch>
 
             <Route exact path="/">
-              <Welcome />
+              <Welcome user={this.props.user} />
             </Route>
 
             <Route path="/breweries/:id/reviews" >
@@ -75,7 +77,7 @@ class App extends Component {
             </Route>
 
             <Route path="/login" >
-              <LoginInput />
+              <LoginContainer />
             </Route>
 
             <Route path="/signup" >
@@ -102,4 +104,6 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps,{fetchBreweries, fetchReviews})(App);
+
+export default connect(
+  mapStateToProps, { fetchBreweries, fetchReviews, getToken, getUser })(App);

@@ -3,15 +3,21 @@ import { connect } from 'react-redux'
 import { LoginCard } from './ComponentStyles'
 import { ErrorComponent } from './ErrorComponent'
 import { Redirect } from 'react-router-dom'
+import { clearErrors } from '../actions/userActions'
+
 
 class LoginInput extends Component {
-    state = {
-        email: '',
-        password: '',
-        shouldRedirect: false
+    constructor(props) {
+        super(props)
+            this.state = {
+            email: '',
+            password: '',
+            shouldRedirect: false
+        }
     }
 
     componentDidUpdate(prevProps) {
+        
         if(this.props.user && !prevProps.user) {
            this.setState({
                shouldRedirect: true
@@ -31,44 +37,14 @@ class LoginInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        this.LoginUser(this.state)
+        this.props.handleSubmit(this.props.csrf_token, this.state)
         this.setState({
             email: '',
             password: ''
         })
-        this.props.clearErrors()        
+        this.props.clearErrors()
+             
     }
-
-    LoginUser = async (user) => {
-
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json')
-        headers.append('X-CSRF-Token', document.cookie.split('=')[1])
-        const formData = { user: {
-            email: user.email,
-            password: user.password
-        }};
-        
-        const options = {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(formData)
-        };
-    
-        try{
-            const request = new Request('http://localhost:3000/api/v1/login', options)
-            const response = await fetch(request);
-            const userObj = await response.json()
-            if (userObj.errors) {
-                this.props.setErrors(userObj)
-            }else{
-                this.props.setUser(userObj)
-            }
-        } catch(data) {
-            alert(data)
-        };
-    
-    };
 
     render() {
         return this.state.shouldRedirect ? 
@@ -103,23 +79,8 @@ class LoginInput extends Component {
 
 const mapStateToProps = state => {
     return {
-        errors: state.users.formErrors,
+        csrf_token: state.tokens,
         user: state.users.user
     }
-} 
-
-const mapDispatchToProps = dispatch => {
-    return ({
-        setUser: (userObj) => dispatch({
-            type: 'SET_USER', payload: userObj
-        }),
-        setErrors: (errObj) => dispatch({
-            type: 'ADD_ERRORS', payload: errObj
-        }),
-        clearErrors: () => dispatch({
-            type: 'CLEAR_ERRORS'
-        })
-    })
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginInput)
+export default connect(mapStateToProps, {clearErrors})(LoginInput)

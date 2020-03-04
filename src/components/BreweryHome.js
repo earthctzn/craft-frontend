@@ -14,7 +14,8 @@ class BreweryHome extends Component {
     constructor(props){
         super(props)   
         this.state= {
-            showRevInput: false,
+            display: false,
+            showReviews: false,
             isLoggedIn: false
         }
         this.handleOnClick = this.handleOnClick.bind(this)
@@ -28,35 +29,36 @@ class BreweryHome extends Component {
         }
     }
 
-    handleOnClick = () => {
-        this.setState({
-            showRevInput: true
-        })
+    handleOnClick = (e) => {
+        e.preventDefault()
+       if (e.target.name === 'rev-inpput') {
+            this.setState({
+                display: true
+            })
+        }else {
+            this.setState({
+                showReviews: true
+            })
+            
+        }
+
     }
 
-    renderReviews = () => {
-        this.props.reviews.reviewsArr.map( review => {
-           return (
-                <blockquote key={review.id}>
-                    {review.content}
-                        - {review.user.username}
-                </blockquote>
-            ) 
-        })
-    }
+     
 
     render() {
+
         const { brewery } = this.props
-        console.log(this.state)
         return this.state.isLoggedIn ? 
         (
             <>
                 <SingleBrewery>
                     <Brewery brewery={brewery} />
-                    {this.state.showRevInput ? <ReviewInput brewery={brewery} /> : null}
-                    {!this.state.showRevInput ? <button onClick={this.handleOnClick} > Leave a Review </button> : null }
-                    <span>Latest Reviews</span>
-                    {this.props.review ? <h3>{this.props.review.content} - by: {this.props.review.user.username}</h3> : null }
+                    {this.state.display ? <ReviewInput brewery={brewery} /> : null}
+                    {!this.state.display ? <button name='rev-input' onClick={this.handleOnClick} > Leave a Review </button> : null }
+                    {' '}
+                    {this.state.showReviews ? <Redirect to={`/breweries/${this.props.brewery.id}/reviews`} /> : null}
+                    {!this.state.showReviews ? <button name='rev-container' onClick={this.handleOnClick} > Latest Reviews </button> : null }
                 </SingleBrewery>
                 
                 <MapCard>  

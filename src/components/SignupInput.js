@@ -72,7 +72,7 @@ class SignupInput extends Component {
         };
     
         try{
-            const response = await fetch('http://localhost:3000/api/v1/signup', options)
+            const response = await fetch('http://localhost:3000/api/v1/signup', options, {withCredentials: true})
             const dataObj = await response.json();
             if (dataObj.errors){
                 this.props.setErrors(dataObj)

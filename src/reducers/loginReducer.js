@@ -4,7 +4,7 @@ import {
     CLEAR_ERRORS
 } from '../actionTypes/index'
 
-export default function UsersReducer(state= {user: null, formErrors: []}, action) {
+export default function loginReducer(state= {user: null, formErrors: []}, action) {
     switch(action.type) {
         case SET_USER:
             return {

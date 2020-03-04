@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux'
 import breweriesReducer from './breweriesReducer'
-import UsersReducer from './UsersReducer'
+import loginReducer from './loginReducer'
 import reviewsReducer from './reviewsReducer'
-import SessionsReducer from './SessionsReducer'
+import tokensReducer from './tokenReducer'
 
 
 const rootReducer = combineReducers({
     breweries: breweriesReducer,
-    users: UsersReducer,
-    sessions: SessionsReducer,
+    users: loginReducer,
+    tokens: tokensReducer,
     reviews: reviewsReducer
 })
 

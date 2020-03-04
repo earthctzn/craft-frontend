@@ -23,6 +23,7 @@ class Home extends Component {
     }
 
     UNSAFE_componentWillMount() {
+        console.log(this.props.user)
         if(this.props.user) {
             this.setState({
                 isLoggedIn: true
@@ -105,19 +106,33 @@ class Home extends Component {
 
     renderWelcome() {
         return this.state.isLoggedIn ? 
-        (
-        <WelcomeCard>
-            <h1>
-                Hey there {this.props.user.username}
-            </h1>
-            <button onClick={this.getLocation}>Breweries Near You</button>
-        </WelcomeCard>
+        (  
+            <>
+                <WelcomeCard>
+                    <h1>
+                        Hey there {this.props.user.username}
+                    </h1>
+                    <button onClick={this.getLocation}>Breweries Near You</button>
+                </WelcomeCard>
+                {}
+            </>
         )
         :
-        (<Redirect to="/" /> ) 
+        (  
+             <Redirect to="/" /> 
+        ) 
+    }
+
+    loading = () => {
+        if(this.props.loading ) {
+          return (
+            <h1>Loading...</h1>
+          )
+        }
     }
 
     render() {
+        this.loading()
         return(
             <React.Fragment>
                 {this.renderWelcome()}
@@ -130,7 +145,8 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         user: state.users.user,
-        breweries: state.breweries.breweriesArr
+        breweries: state.breweries.breweriesArr,
+        loading: state.breweries.loading
     }
 }
 
