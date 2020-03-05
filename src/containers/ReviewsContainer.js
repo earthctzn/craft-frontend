@@ -4,6 +4,7 @@ import Review from '../components/Review'
 import { Redirect } from 'react-router-dom'
 
 
+
 class ReviewsContainer extends Component {
     state={
         isLoggedIn: false
@@ -26,8 +27,10 @@ class ReviewsContainer extends Component {
     }
 
 
+
+
     renderReviews = () => {
-       return this.props.reviews.reviewsArr.map(rev =>   <Review key={Math.random()} review={rev}/>)
+       return this.props.reviews.reviewsArr.map(rev =>   <Review key={Math.random()} review={rev}  />)
     }
 
 
@@ -47,8 +50,10 @@ class ReviewsContainer extends Component {
 const mapStateToProps = state => {
     return {
         reviews: state.reviews,
-        user: state.users.user
+        user: state.users.user,
+        
     }
 }
+
 
 export default connect(mapStateToProps)(ReviewsContainer) 

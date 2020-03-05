@@ -44,12 +44,12 @@ export const fetchReviews = () => {
 
 //Fetch (POST) a new review with it's brewery and user.
 
-export const createReview = (data) => {
+export const createReview = (token, data) => {
     return async dispatch => {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json')
         headers.append('Accepts', 'application/json')
-        headers.append('X-CSRF-Token', document.cookie.split('=')[1])
+        headers.append('X-CSRF-Token', token)
 
         const formData = { 
             review: {
@@ -63,7 +63,8 @@ export const createReview = (data) => {
         const options = {
             method: 'POST',
             headers,
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            credentials: 'include'
         }
 
         try{

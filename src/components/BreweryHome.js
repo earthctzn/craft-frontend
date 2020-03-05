@@ -5,6 +5,7 @@ import { SingleBrewery, MapCard } from './ComponentStyles'
 import ReviewInput from './ReviewInput'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { createReview } from '../actions/reviewActions'
  
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
@@ -31,10 +32,12 @@ class BreweryHome extends Component {
 
     handleOnClick = (e) => {
         e.preventDefault()
-       if (e.target.name === 'rev-inpput') {
+        console.log(e.target.name)
+       if (e.target.name === 'input') {
             this.setState({
                 display: true
             })
+            return
         }else {
             this.setState({
                 showReviews: true
@@ -42,6 +45,10 @@ class BreweryHome extends Component {
             
         }
 
+    }
+
+    submitHandler = async (token, user) => {
+        await this.props.createReview(token, user)
     }
 
      
@@ -54,8 +61,8 @@ class BreweryHome extends Component {
             <>
                 <SingleBrewery>
                     <Brewery brewery={brewery} />
-                    {this.state.display ? <ReviewInput brewery={brewery} /> : null}
-                    {!this.state.display ? <button name='rev-input' onClick={this.handleOnClick} > Leave a Review </button> : null }
+                    {this.state.display ? <ReviewInput brewery={brewery} revCreate={this.submitHandler} /> : null}
+                    {!this.state.display ? <button name='input' onClick={this.handleOnClick} > Leave a Review </button> : null }
                     {' '}
                     {this.state.showReviews ? <Redirect to={`/breweries/${this.props.brewery.id}/reviews`} /> : null}
                     {!this.state.showReviews ? <button name='rev-container' onClick={this.handleOnClick} > Latest Reviews </button> : null }
@@ -97,4 +104,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(BreweryHome)
+const mapDispatchToProps = dispatch => ({
+    createReview: (csrf_token, review) =>  {dispatch(createReview(csrf_token, review))}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BreweryHome)

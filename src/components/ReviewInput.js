@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { 
-    addReview, 
-    setReview, 
-    setReviews, 
-    createReview
-} from '../actions/reviewActions'
+
 
 
 class ReviewInput extends Component {
@@ -25,7 +20,8 @@ class ReviewInput extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createReview(this.state)
+        console.log(this.props)
+        this.props.revCreate(this.props.token, this.state)
         this.setState({
             content: '',
             user_id: null,
@@ -51,8 +47,9 @@ class ReviewInput extends Component {
 const mapStateToProps = state => {
     return {
         user: state.users.user,
-        brewery: state.breweries.brewery
+        brewery: state.breweries.brewery,
+        token: state.tokens
     }
 }
 
-export default connect(mapStateToProps,{addReview, setReview, setReviews, createReview})(ReviewInput)
+export default connect(mapStateToProps)(ReviewInput)
