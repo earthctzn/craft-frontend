@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { AddressCard } from './ComponentStyles'
-import Review from './Review'
+
 
 class Brewery extends Component {
 
@@ -19,7 +19,7 @@ class Brewery extends Component {
                     {' '}
                     {brewery.state}
                 </AddressCard>
-                {this.props.review ? <Review review={this.props.review}/> : null }
+                
             </>
         )
     }

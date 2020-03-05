@@ -6,6 +6,7 @@ import ReviewInput from './ReviewInput'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createReview } from '../actions/reviewActions'
+import ReviewContainer from '../containers/ReviewsContainer'
  
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
@@ -32,7 +33,6 @@ class BreweryHome extends Component {
 
     handleOnClick = (e) => {
         e.preventDefault()
-        console.log(e.target.name)
        if (e.target.name === 'input') {
             this.setState({
                 display: true
@@ -49,9 +49,8 @@ class BreweryHome extends Component {
 
     submitHandler = async (token, user) => {
         await this.props.createReview(token, user)
+        alert("Review Created")
     }
-
-     
 
     render() {
 
@@ -65,7 +64,8 @@ class BreweryHome extends Component {
                     {!this.state.display ? <button name='input' onClick={this.handleOnClick} > Leave a Review </button> : null }
                     {' '}
                     {this.state.showReviews ? <Redirect to={`/breweries/${this.props.brewery.id}/reviews`} /> : null}
-                    {!this.state.showReviews ? <button name='rev-container' onClick={this.handleOnClick} > Latest Reviews </button> : null }
+                    { brewery.reviews.length > 0 ? <button name='rev-container' onClick={this.handleOnClick} > Latest Reviews </button> : null }
+                    {this.state.showReviews ? <ReviewContainer brewery={brewery}/> : null }
                 </SingleBrewery>
                 
                 <MapCard>  
@@ -100,7 +100,6 @@ class BreweryHome extends Component {
 const mapStateToProps = state => {
     return {
         user: state.users.user,
-        review: state.reviews.review
     }
 }
 

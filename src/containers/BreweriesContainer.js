@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import  Brewery from '../components/Brewery'
 import { BreweryCard } from '../components/ComponentStyles'
 import { Redirect } from 'react-router-dom'
+import { fetchSelectedBrewery } from '../actions/breweryActions'
 
 
 
@@ -28,11 +29,13 @@ class BreweriesContainer extends Component {
 
     handleOnClick(e, brewery){
         e.preventDefault()
-        this.props.selectedBrewery(brewery);
-        this.setState({
-            toSelectedBrewery: true,
-            id: brewery.id
-        })  
+        this.props.fetchSelectedBrewery( this.props.token, brewery)
+        .then(() => {
+            this.setState({
+                toSelectedBrewery: true,
+                id: this.props.selectedBrew.id
+            })
+        })
     }
 
     renderBrewery = (props) => {
@@ -74,18 +77,13 @@ class BreweriesContainer extends Component {
 const mapStateToProps = state => {
     return {
         all: state.breweries,
-        user: state.users.user
+        user: state.users.user,
+        token: state.tokens,
+        selectedBrew: state.breweries.brewery
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return ({
-        selectedBrewery: (breweryObj) => dispatch({
-            type: 'SELECTED_BREWERY', payload: breweryObj
-        })
-    })
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(BreweriesContainer)
+export default connect(mapStateToProps, { fetchSelectedBrewery })(BreweriesContainer)
 
 

@@ -65,7 +65,7 @@ class App extends Component {
             </Route>
 
             <Route path="/breweries/:id/reviews" >
-              <ReviewsContainer />
+              <ReviewsContainer brewery={this.props.store.breweries.brewery} />
             </Route>
 
             <Route path="/breweries/:id">
@@ -73,7 +73,7 @@ class App extends Component {
             </Route>
 
             <Route path="/breweries" >
-              <BreweriesContainer />
+              <BreweriesContainer brewery={this.props.store.breweries.brewery} />
             </Route>
 
             <Route path="/login" >

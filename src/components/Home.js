@@ -23,7 +23,6 @@ class Home extends Component {
     }
 
     UNSAFE_componentWillMount() {
-        console.log(this.props.user)
         if(this.props.user) {
             this.setState({
                 isLoggedIn: true

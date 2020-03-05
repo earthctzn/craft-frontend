@@ -20,7 +20,6 @@ class ReviewInput extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.props)
         this.props.revCreate(this.props.token, this.state)
         this.setState({
             content: '',

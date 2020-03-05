@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Review from '../components/Review'
 import { Redirect } from 'react-router-dom'
+import { SingleBrewery } from '../components/ComponentStyles'
+import Brewery from '../components/Brewery'
 
 
 
@@ -26,11 +28,8 @@ class ReviewsContainer extends Component {
         }
     }
 
-
-
-
     renderReviews = () => {
-       return this.props.reviews.reviewsArr.map(rev =>   <Review key={Math.random()} review={rev}  />)
+       return this.props.brewery.reviews.map(rev =>   <Review key={Math.random()} review={rev}  />)
     }
 
 
@@ -38,7 +37,11 @@ class ReviewsContainer extends Component {
         
         return this.state.isLoggedIn ? 
         (
-            this.renderReviews()
+            <SingleBrewery>
+                <Brewery brewery={this.props.brewery} />
+                {this.renderReviews()}
+            </SingleBrewery>
+            
         )
         :
         (            
@@ -49,9 +52,7 @@ class ReviewsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        reviews: state.reviews,
-        user: state.users.user,
-        
+        user: state.users.user  
     }
 }
 
