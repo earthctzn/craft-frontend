@@ -23,7 +23,8 @@ export default function breweriesReducer(state = {breweriesArr: [], brewery: {},
 
         case SELECTED_BREWERY:
             return {
-                ...state, brewery: action.payload
+                ...state, brewery: action.payload,
+                loading: false
             }
         default:
             return state;

@@ -1,26 +1,35 @@
+import { 
+    SET_USER,
+    CLEAR_USER,
+    ADD_ERRORS,
+    CLEAR_ERRORS,
+    } from '../actionTypes/index'
+
+
+
 export function setUser(userObj){
     return {
-        type: 'SET_USER', 
+        type: SET_USER, 
         payload: userObj
     }
 }
 
 export function clearUser(){
     return {
-        type: 'CLEAR_USER'
+        type: CLEAR_USER
     }
 }
 
 export function setErrors(errObj) {
     return {
-        type: 'ADD_ERRORS',
+        type: ADD_ERRORS,
         payload: errObj
     }
 }
 
 export function clearErrors() {
     return {
-        type: 'CLEAR_ERRORS'
+        type: CLEAR_ERRORS
     }
 }
 

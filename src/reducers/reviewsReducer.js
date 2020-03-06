@@ -38,7 +38,8 @@ export default function reviewsReducer(state = {reviewsArr: [], review: null, lo
         case SELECTED_REVIEW:
             return {
                 ...state, 
-                review: action.payload
+                review: action.payload,
+                loading: false
             }
         default:
             return state;

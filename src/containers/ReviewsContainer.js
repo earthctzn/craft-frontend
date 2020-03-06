@@ -6,7 +6,6 @@ import { SingleBrewery } from '../components/ComponentStyles'
 import Brewery from '../components/Brewery'
 
 
-
 class ReviewsContainer extends Component {
 
 
