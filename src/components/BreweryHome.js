@@ -18,18 +18,10 @@ class BreweryHome extends Component {
         this.state= {
             display: false,
             showReviews: false,
-            isLoggedIn: false
         }
         this.handleOnClick = this.handleOnClick.bind(this)
     }
     
-    UNSAFE_componentWillMount() {
-        if(this.props.user) {
-            this.setState({
-                isLoggedIn: true
-            })
-        }
-    }
 
     handleOnClick = (e) => {
         e.preventDefault()
@@ -55,7 +47,7 @@ class BreweryHome extends Component {
     render() {
 
         const { brewery } = this.props
-        return this.state.isLoggedIn ? 
+        return this.props.isLoggedIn ? 
         (
             <>
                 <SingleBrewery>
@@ -100,6 +92,7 @@ class BreweryHome extends Component {
 const mapStateToProps = state => {
     return {
         user: state.users.user,
+        isLoggedIn: state.users.loggedIn
     }
 }
 

@@ -6,6 +6,7 @@ export function setUser(userObj){
 }
 
 export function clearUser(){
+    console.log("in clear user")
     return {
         type: 'CLEAR_USER'
     }
@@ -42,43 +43,6 @@ export const getUser = () => {
         }
     }
 }
-
-export const signupUser =  async (token, user) => {
-   return async function (dispatch) {
-       try{
-            const headers = new Headers();
-
-            headers.append('Content-Type', 'application/json')
-            headers.append('Accepts', 'application/json')
-            headers.append('X-CSRF-Token', token)
-        
-            const formData = {user: {
-                username: user.username,
-                email: user.email,
-                password: user.password,
-                password_confirmation: user.password_confirmation 
-            }};
-        
-            const options = {
-                method: 'POST',
-                headers,
-                body: JSON.stringify(formData),
-                credentials: 'include'
-            };
-        
-            
-            const response = await fetch('http://localhost:3000/api/v1/signup', options)
-            const dataObj = await response.json();
-            if (dataObj.errors){
-                dispatch(setErrors(dataObj))
-            }else{
-                dispatch(setUser(dataObj))
-            }
-       }catch(err){
-           console.log(err)
-       }
-   }   
-};
 
 
 export const logOutUser = (token) => {

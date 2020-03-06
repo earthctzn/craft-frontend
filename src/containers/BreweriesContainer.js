@@ -13,19 +13,11 @@ class BreweriesContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isLoggedIn: false,
             toSelectedBrewery: false,
             id: ''
         }
     }
 
-    UNSAFE_componentWillMount() {
-        if(this.props.user) {
-            this.setState({
-                isLoggedIn: true
-            })
-        }
-    }
 
     handleOnClick(e, brewery){
         e.preventDefault()
@@ -51,7 +43,6 @@ class BreweriesContainer extends Component {
                     <Brewery
                         key={brewery.id}
                         brewery={brewery}
-                        selectedBrewery={this.props.selectedBrewery}
                         handleOnClick={this.handleOnClick}
                     />
                 </BreweryCard> 
@@ -60,7 +51,7 @@ class BreweriesContainer extends Component {
     }
 
     render() {
-        return this.state.isLoggedIn ?
+        return this.props.isLoggedIn ?
         (
             this.renderBrewery(this.props)
         )
@@ -79,7 +70,8 @@ const mapStateToProps = state => {
         all: state.breweries,
         user: state.users.user,
         token: state.tokens,
-        selectedBrew: state.breweries.brewery
+        selectedBrew: state.breweries.brewery,
+        isLoggedIn: state.users.loggedIn
     }
 }
 

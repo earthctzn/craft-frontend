@@ -82,7 +82,7 @@ class SignupInput extends Component {
                 this.props.setUser(dataObj)
             }
         } catch(data) {
-            return {errors: data}
+            console.log(data)
         };
         
     };

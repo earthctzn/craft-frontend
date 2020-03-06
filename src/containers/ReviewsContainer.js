@@ -8,17 +8,7 @@ import Brewery from '../components/Brewery'
 
 
 class ReviewsContainer extends Component {
-    state={
-        isLoggedIn: false
-    }
 
-    UNSAFE_componentWillMount() {
-        if (this.props.user) {
-            this.setState({
-                isLoggedIn: true
-            })
-        }
-    }
 
     loading = () => {
         if(this.props.reviews.loading) {
@@ -35,7 +25,7 @@ class ReviewsContainer extends Component {
 
     render() {
         
-        return this.state.isLoggedIn ? 
+        return this.props.isLoggedIn ? 
         (
             <SingleBrewery>
                 <Brewery brewery={this.props.brewery} />
@@ -52,7 +42,8 @@ class ReviewsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.users.user  
+        user: state.users.user,
+        isLoggedIn: state.users.loggedIn 
     }
 }
 
