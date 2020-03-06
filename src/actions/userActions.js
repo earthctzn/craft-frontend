@@ -6,7 +6,6 @@ export function setUser(userObj){
 }
 
 export function clearUser(){
-    console.log("in clear user")
     return {
         type: 'CLEAR_USER'
     }

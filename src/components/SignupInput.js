@@ -150,18 +150,5 @@ const mapStateToProps = state => {
     }
 } 
 
-// const mapDispatchToProps = dispatch => {
-//     return ({
-//         setUser: (userObj) => dispatch({
-//             type: 'SET_USER', payload: userObj
-//         }),
-//         setErrors: (errObj) => dispatch({
-//             type: 'ADD_ERRORS', payload: errObj
-//         }),
-//         clearErrors: () => dispatch({
-//             type: 'CLEAR_ERRORS'
-//         })
-//     })
-// }
 
 export default connect(mapStateToProps, { setUser, setErrors, clearErrors })(SignupInput)
