@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import '../app.css'
 import { Link } from 'react-router-dom'
 // import { loginWithFaceBook } from '../actions/userActions'
