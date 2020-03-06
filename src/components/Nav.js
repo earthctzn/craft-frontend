@@ -29,11 +29,11 @@ class Nav extends Component  {
         
 }
 
-const mapStateToProps = state => {
-   return {
-       token: state.tokens
-   } 
-}
+// const mapStateToProps = state => {
+//    return {
+//        token: state.tokens
+//    } 
+// }
 
 export default connect(mapStateToProps)(Nav)   
 // {loginWithFaceBook} this goes inside connect.
