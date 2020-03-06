@@ -35,5 +35,5 @@ class Nav extends Component  {
 //    } 
 // }
 
-export default connect(mapStateToProps)(Nav)   
-// {loginWithFaceBook} this goes inside connect.
+export default Nav
+//  connect( mapStateToProps, {loginWithFaceBook })( Nav )   
