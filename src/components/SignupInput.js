@@ -3,6 +3,7 @@ import { LoginCard } from './ComponentStyles'
 import { connect } from 'react-redux'
 import { ErrorComponent } from './ErrorComponent';
 import { Redirect } from 'react-router-dom'
+import { setErrors, setUser, clearErrors} from '../actions/userActions'
 
 
 
@@ -40,7 +41,7 @@ class SignupInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        this.signupUser(this.state)
+        this.signupUser(this.props.token, this.state)
         this.setState({
             username: '',
             email: '',
@@ -50,12 +51,12 @@ class SignupInput extends Component {
         this.props.clearErrors()
 
     }
-    signupUser =  async (user) => {
+    signupUser =  async (token, user) => {
    
         const headers = new Headers();
         headers.append('Content-Type', 'application/json')
         headers.append('Accepts', 'application/json')
-        headers.append('X-CSRF-Token', document.cookie.split('=')[1])
+        headers.append('X-CSRF-Token', token)
     
         
         const formData = {user: {
@@ -68,11 +69,12 @@ class SignupInput extends Component {
         const options = {
             method: 'POST',
             headers,
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            credentials: 'include'
         };
     
         try{
-            const response = await fetch('http://localhost:3000/api/v1/signup', options, {withCredentials: true})
+            const response = await fetch('http://localhost:3000/api/v1/signup', options)
             const dataObj = await response.json();
             if (dataObj.errors){
                 this.props.setErrors(dataObj)
@@ -143,22 +145,23 @@ class SignupInput extends Component {
 const mapStateToProps = state => {
     return {
         errors: state.users.formErrors,
-        user: state.users.user
+        user: state.users.user,
+        token: state.tokens
     }
 } 
 
-const mapDispatchToProps = dispatch => {
-    return ({
-        setUser: (userObj) => dispatch({
-            type: 'SET_USER', payload: userObj
-        }),
-        setErrors: (errObj) => dispatch({
-            type: 'ADD_ERRORS', payload: errObj
-        }),
-        clearErrors: () => dispatch({
-            type: 'CLEAR_ERRORS'
-        })
-    })
-}
+// const mapDispatchToProps = dispatch => {
+//     return ({
+//         setUser: (userObj) => dispatch({
+//             type: 'SET_USER', payload: userObj
+//         }),
+//         setErrors: (errObj) => dispatch({
+//             type: 'ADD_ERRORS', payload: errObj
+//         }),
+//         clearErrors: () => dispatch({
+//             type: 'CLEAR_ERRORS'
+//         })
+//     })
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupInput)
+export default connect(mapStateToProps, { setUser, setErrors, clearErrors })(SignupInput)

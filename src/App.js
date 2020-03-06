@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">          
-          {this.props.user ? <UserNav/> : <Nav /> }
+          {this.props.loggedIn ? <UserNav/> : <Nav /> }
           <Switch>
 
             <Route exact path="/">
@@ -100,7 +100,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return ({
     store: state,
-    user: state.users.user
+    user: state.users.user,
+    loggedIn: state.users.loggedIn
   })
 }
 

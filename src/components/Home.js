@@ -13,7 +13,7 @@ class Home extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isLoggedIn: false,
+            // isLoggedIn: false,
             lat: null,
             lng: null
         }
@@ -22,13 +22,13 @@ class Home extends Component {
         this.revGeoCodeLocation = this.revGeoCodeLocation.bind(this)
     }
 
-    UNSAFE_componentWillMount() {
-        if(this.props.user) {
-            this.setState({
-                isLoggedIn: true
-            })
-        }
-    }
+    // UNSAFE_componentWillMount() {
+    //     if(this.props.loggedIn) {
+    //         this.setState({
+    //             isLoggedIn: true
+    //         })
+    //     }
+    // }
 
     revGeoCodeLocation() {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.lat},${this.state.lng}&sensor=false&key=${API_KEY}`)
@@ -104,7 +104,7 @@ class Home extends Component {
     }
 
     renderWelcome() {
-        return this.state.isLoggedIn ? 
+        return this.props.loggedIn ? 
         (  
             <>
                 <WelcomeCard>
@@ -145,7 +145,8 @@ const mapStateToProps = state => {
     return {
         user: state.users.user,
         breweries: state.breweries.breweriesArr,
-        loading: state.breweries.loading
+        loading: state.breweries.loading,
+        loggedIn: state.users.loggedIn
     }
 }
 
