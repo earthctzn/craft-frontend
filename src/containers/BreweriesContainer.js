@@ -2,9 +2,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import  Brewery from '../components/Brewery'
-import { BreweryCard } from '../components/ComponentStyles'
+import { BreweryCard, BreweriesGrid, CardContent} from '../components/ComponentStyles'
 import { Redirect } from 'react-router-dom'
 import { fetchSelectedBrewery } from '../actions/breweryActions'
+
 
 
 
@@ -44,11 +45,13 @@ class BreweriesContainer extends Component {
         return props.all.breweriesArr.map(brewery => {
             return(
                 <BreweryCard key={brewery.id} onClick={e => this.handleOnClick(e, brewery)} >
+                   <CardContent>
                     <Brewery
-                        key={brewery.id}
-                        brewery={brewery}
-                        handleOnClick={this.handleOnClick}
-                    />
+                            key={brewery.id}
+                            brewery={brewery}
+                            handleOnClick={this.handleOnClick}
+                        />
+                   </CardContent>
                 </BreweryCard> 
             )
         })
@@ -57,7 +60,10 @@ class BreweriesContainer extends Component {
     render() {
         return this.props.isLoggedIn ?
         (
-            this.renderBrewery(this.props)
+            <BreweriesGrid>
+                {this.renderBrewery(this.props)}
+            </BreweriesGrid>
+            
         )
         :
         (

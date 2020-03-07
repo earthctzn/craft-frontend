@@ -26,7 +26,7 @@ export const fetchBreweries = () => {
     return async dispatch => {
         try {
             dispatch(loadingBreweries())
-                const response = await fetch(`https://api.openbrewerydb.org/breweries?&per_page=30`)
+                const response = await fetch(`https://api.openbrewerydb.org/breweries?&per_page=32`)
                 if (!response.ok) {
                     throw response
                 }

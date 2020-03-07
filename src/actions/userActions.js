@@ -43,7 +43,9 @@ export const getUser = () => {
             if(!res.ok){
                 throw res
             }
+            
             const userObj = await res.json()
+            
             if (userObj.errors) {
                 dispatch(setErrors(userObj))
             }else {

@@ -1,16 +1,22 @@
 import styled from 'styled-components'
     const BreweryCard = styled.div`
         background-color: rgba(248, 243, 243, 0.4);
-        color: darkred;
-        width: 2in;
-        height: in;
-        display: inline-block;
-        display: inline-table;
+        display: flex;
         padding: 10px;
         margin: 10px;
+        justify-content: center;
         border-radius: .3in;
         border-style: solid;
         border-color: black;
+        :hover{
+            box-shadow: 10px 5px 5px darkred;
+        }
+    `
+    const CardContent = styled.div`
+        background-color: rgba(248, 243, 243, 0);
+        display: inline-block;
+        display: inline-table;
+        color: darkred;
     `
     const SingleBrewery = styled.div`
         background-color: rgba(248, 243, 243, 0.4);6y
@@ -61,9 +67,20 @@ import styled from 'styled-components'
         border-color: black;
 
     `
+    const BreweriesGrid = styled.div`
+        display: grid;
+        justify-content: center;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto; 
+        grid-column-gap: 5px;
+        grid-row-gap: 5px;
+        
+    `
     const WelcomeCard = styled.div`
         color: darkred;
         background-color: rgba(248, 243, 243, 0.6);
+        width: 50vw;
+        heigth: 40vh;
         border-radius: .3in;
         border-style: solid;
         border-color: black;
@@ -91,5 +108,7 @@ export {
     LoginCard, 
     InfoWindowContent, 
     ErrorCard,
-    WelcomeCard
+    WelcomeCard,
+    BreweriesGrid,
+    CardContent
 }
