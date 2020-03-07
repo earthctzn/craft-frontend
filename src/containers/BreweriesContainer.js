@@ -22,12 +22,16 @@ class BreweriesContainer extends Component {
     handleOnClick(e, brewery){
         e.preventDefault()
         this.props.fetchSelectedBrewery( this.props.token, brewery)
-        .then(() => {
+
+    }
+
+    componentDidUpdate() {
+        if(Object.keys(this.props.selectedBrew).length > 0){
             this.setState({
                 toSelectedBrewery: true,
                 id: this.props.selectedBrew.id
             })
-        })
+        }
     }
 
     renderBrewery = (props) => {

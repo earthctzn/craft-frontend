@@ -40,7 +40,7 @@ export const fetchBreweries = () => {
 
 // Find or create the selected brewry
 export const fetchSelectedBrewery = (csrf_token, brewery) => {
-
+    
     return async dispatch => {
         try {
             dispatch(loadingBreweries())
@@ -62,6 +62,7 @@ export const fetchSelectedBrewery = (csrf_token, brewery) => {
                 }
                 const breweryData = await response.json()
                 dispatch(setSelectedBrewery(breweryData))
+
         }catch(data){
             return {errors: data}
         }

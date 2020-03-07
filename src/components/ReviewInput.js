@@ -15,6 +15,7 @@ class ReviewInput extends Component {
             content: e.target.value,
             user_id: this.props.user.id,
             brewery: this.props.brewery
+  
         })
     }
 
@@ -28,10 +29,9 @@ class ReviewInput extends Component {
         })
     }
 
-    
-
     render() {
         return (
+            <>
             <form onSubmit={e => this.handleSubmit(e) }>
                 <textarea
                     value={ this.state.content }
@@ -39,6 +39,9 @@ class ReviewInput extends Component {
                 ></textarea>
                 <button type="submit" onSubmit={e => this.handleSubmit(e)}> Submit </button>
             </form>
+
+            
+            </>
         )
     }
 }

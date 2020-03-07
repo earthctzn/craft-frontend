@@ -3,6 +3,7 @@ import Map from './Map'
 import Brewery from './Brewery'
 import { SingleBrewery, MapCard } from './ComponentStyles'
 import ReviewInput from './ReviewInput'
+import Review from './Review'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createReview } from '../actions/reviewActions'
@@ -18,8 +19,11 @@ class BreweryHome extends Component {
         this.state= {
             display: false,
             showReviews: false,
+            render: false
         }
         this.handleOnClick = this.handleOnClick.bind(this)
+        this.submitHandler = this.submitHandler.bind(this)
+        this.closeModal = this.closeModal.bind(this)
     }
     
 
@@ -41,7 +45,30 @@ class BreweryHome extends Component {
 
     submitHandler = async (token, user) => {
         await this.props.createReview(token, user)
-        alert("Review Created")
+        this.setState({
+            ...this.state,
+            render: true
+        })
+    }
+
+    renderReview = () => {
+        return (
+            <div className='modal'>
+                <SingleBrewery>
+                    <button onClick={this.closeModal}>Close</button>
+                    <Brewery brewery={this.props.brewery}/> 
+                    { this.props.review ? <Review review={this.props.review}/> : null }
+                    
+                </SingleBrewery>
+            </div>
+        )
+    }
+
+    closeModal = () => {
+        this.setState({
+            ...this.state,
+            render: false
+        })
     }
 
     render() {
@@ -59,7 +86,7 @@ class BreweryHome extends Component {
                     { brewery.reviews.length > 0 ? <button name='rev-container' onClick={this.handleOnClick} > Latest Reviews </button> : null }
                     {this.state.showReviews ? <ReviewContainer brewery={brewery}/> : null }
                 </SingleBrewery>
-                
+                    {this.state.render ? this.renderReview() :  null }
                 <MapCard>  
                     <Map 
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`} 
@@ -92,7 +119,8 @@ class BreweryHome extends Component {
 const mapStateToProps = state => {
     return {
         user: state.users.user,
-        isLoggedIn: state.users.loggedIn
+        isLoggedIn: state.users.loggedIn,
+        review: state.reviews.review
     }
 }
 
