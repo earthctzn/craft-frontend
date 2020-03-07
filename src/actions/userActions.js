@@ -44,8 +44,12 @@ export const getUser = () => {
                 throw res
             }
             const userObj = await res.json()
-            if (userObj)
-            dispatch(setUser(userObj))
+            if (userObj.errors) {
+                dispatch(setErrors(userObj))
+            }else {
+                dispatch(setUser(userObj))
+            }
+            
         }catch(data){
             console.log(data)
         }
@@ -65,8 +69,6 @@ export const logOutUser = (token) => {
                 }
             })
             dispatch(clearUser())
-            
-
         }catch(err){
             console.log(err)
         }

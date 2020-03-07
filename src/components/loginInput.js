@@ -51,28 +51,33 @@ class LoginInput extends Component {
          (<Redirect to="/home" /> ) 
          : 
          (
-            <LoginCard >
-                <h3>Login To See all breweries!</h3>
-                <form onSubmit={this.handleOnSubmit}>
-                    <input
-                        id='email'
-                        type="text" 
-                        placeholder="email"
-                        value={this.state.email}
-                        onChange={e => this.handleInputChange(e)}
-                    >
-                    </input>
-                    <input
-                        id="password"
-                        type="password" 
-                        placeholder="password"
-                        value={this.state.password}
-                        onChange={e => this.handleInputChange(e)}
-                    >
-                    </input>
-                    <button type="submit" > Log In </button>
-                </form>
-            </LoginCard>
+            <>
+                <LoginCard >
+                    <h3>Login To See all breweries!</h3>
+                    <form onSubmit={this.handleOnSubmit}>
+                        <input
+                            id='email'
+                            type="text" 
+                            placeholder="email"
+                            value={this.state.email}
+                            onChange={e => this.handleInputChange(e)}
+                        >
+                        </input>
+                        <input
+                            id="password"
+                            type="password" 
+                            placeholder="password"
+                            value={this.state.password}
+                            onChange={e => this.handleInputChange(e)}
+                        >
+                        </input>
+                        <button type="submit" > Log In </button>
+                    </form>
+                </LoginCard>
+                <div>
+                    {this.renderErrors()}  
+                </div>
+            </>
         )
     }
 }
@@ -80,7 +85,8 @@ class LoginInput extends Component {
 const mapStateToProps = state => {
     return {
         csrf_token: state.tokens,
-        user: state.users.user
+        user: state.users.user,
+        errors: state.users.formErrors
     }
 }
 export default connect(mapStateToProps, {clearErrors})(LoginInput)
