@@ -8,7 +8,6 @@ export const loginUser = (csrf_token, user) => {
                 email: user.email,
                 password: user.password
             }};
-       
             const response = await fetch('http://localhost:3000/api/v1/login',{
                 method: 'POST',
                 headers: {
@@ -22,6 +21,7 @@ export const loginUser = (csrf_token, user) => {
                 throw response
             }
             const userObj = await response.json()
+            console.log("After fetch loginUser",userObj)
             if (userObj.errors) {
                 dispatch(setErrors(userObj))
             }else{
@@ -37,9 +37,7 @@ export const loginUser = (csrf_token, user) => {
 export const getToken = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch('http://localhost:3000/api/v1/auth', {
-                credentials: 'include'
-            })
+            const res = await fetch('http://localhost:3000/api/v1/auth', {credentials: 'include'})
             if(!res.ok){
                 throw res
             }

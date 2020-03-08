@@ -12,7 +12,7 @@ class UserNav extends Component{
     
     handleOnclick = () => {
         this.props.logOutUser(this.props.token)
-        this.props.getToken()
+        
         
     }
 

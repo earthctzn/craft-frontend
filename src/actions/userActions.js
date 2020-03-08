@@ -5,7 +5,7 @@ import {
     CLEAR_ERRORS,
     } from '../actionTypes/index'
 
-
+import { getToken } from './loginActions'
 
 export function setUser(userObj){
     return {
@@ -45,7 +45,7 @@ export const getUser = () => {
             }
             
             const userObj = await res.json()
-            
+            console.log(userObj)
             if (userObj.errors) {
                 dispatch(setErrors(userObj))
             }else {
@@ -71,6 +71,7 @@ export const logOutUser = (token) => {
                 }
             })
             dispatch(clearUser())
+            dispatch(getToken())
         }catch(err){
             console.log(err)
         }

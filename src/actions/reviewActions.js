@@ -29,7 +29,7 @@ export const fetchReviews = () => {
     return async dispatch => {
         try {
             dispatch({ type: 'LOADING_REVIEWS'})
-                const response = await fetch(reviewsURL)
+                const response = await fetch(reviewsURL, {credentials: 'include'})
                 if (!response.ok) {
                     throw response
                 }
