@@ -62,7 +62,6 @@ export const fetchSelectedBrewery = (csrf_token, brewery) => {
                 }
                 const breweryData = await response.json()
                 dispatch(setSelectedBrewery(breweryData))
-
         }catch(data){
             return {errors: data}
         }

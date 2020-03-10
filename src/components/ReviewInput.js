@@ -32,15 +32,19 @@ class ReviewInput extends Component {
     render() {
         return (
             <>
-            <form onSubmit={e => this.handleSubmit(e) }>
-                <textarea
-                    value={ this.state.content }
-                    onChange={ e => this.handleOnChange(e) }
-                ></textarea>
-                <button type="submit" onSubmit={e => this.handleSubmit(e)}> Submit </button>
-            </form>
+                <form onSubmit={e => this.handleSubmit(e) }>
 
-            
+                    <textarea
+                        value={ this.state.content }
+                        onChange={ e => this.handleOnChange(e) }
+                    ></textarea>
+
+                    <button 
+                        type="submit" 
+                        onSubmit={e => this.handleSubmit(e)} 
+                    > Submit </button>
+                    
+                </form>
             </>
         )
     }
