@@ -7,6 +7,7 @@ import {
 
 import { getToken } from './loginActions'
 
+//State altering actions
 export function setUser(userObj){
     return {
         type: SET_USER, 
@@ -33,7 +34,7 @@ export function clearErrors() {
     }
 }
 
-
+// Get current user on app load or refresh
 export const getUser = () => {
     return async function (dispatch) {
         try{
@@ -49,7 +50,7 @@ export const getUser = () => {
             if (userObj.errors) {
                 dispatch(setErrors(userObj))
             }else {
-                dispatch(setUser(userObj))
+                dispatch(setUser(userObj)) 
             }
             
         }catch(data){
@@ -58,7 +59,7 @@ export const getUser = () => {
     }
 }
 
-
+// Logout user and get a fresh token
 export const logOutUser = (token) => {
     return async function (dispatch) {
         try{

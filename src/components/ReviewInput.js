@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-
-
 class ReviewInput extends Component {
     state = {
         content: '',
@@ -10,23 +8,32 @@ class ReviewInput extends Component {
         user_id: null
     }
 
-    handleOnChange = (e) => {
+    componentDidMount() {
         this.setState({
-            content: e.target.value,
+            ...this.state,
             user_id: this.props.user.id,
             brewery: this.props.brewery
-  
+        })
+    }
+
+    handleOnChange = (e) => {
+        this.setState({
+            ...this.state,
+            content: e.target.value
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.revCreate(this.props.token, this.state)
-        this.setState({
-            content: '',
-            user_id: null,
-            brewery: null
-        })
+        if (this.state.content !== ''){
+            this.props.revCreate(this.props.token, this.state) 
+            this.setState({
+                content: '',
+                user_id: null,
+                brewery: null
+            })
+        }
+
     }
 
     render() {
@@ -41,7 +48,6 @@ class ReviewInput extends Component {
 
                     <button 
                         type="submit" 
-                        onSubmit={e => this.handleSubmit(e)} 
                     > Submit </button>
                     
                 </form>

@@ -37,11 +37,10 @@ class App extends Component {
   
 
   componentDidMount() {
-    this.props.getUser()
     this.props.getToken()
+    this.props.getUser()
     this.props.fetchBreweries()
     this.props.fetchReviews()
-    
   }
 
   loading = () => {

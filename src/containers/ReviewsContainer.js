@@ -8,19 +8,9 @@ import Brewery from '../components/Brewery'
 
 class ReviewsContainer extends Component {
 
-
-    loading = () => {
-        if(this.props.reviews.loading) {
-          return (
-            <h1>Loading...</h1>
-          )
-        }
-    }
-
     renderReviews = () => {
-       return this.props.brewery.reviews.map(rev =>   <Review key={Math.random()} review={rev}  />)
+       return this.props.brewery.reviews.map(rev => <Review key={Math.random()} review={rev}  /> )
     }
-
 
     render() {
         

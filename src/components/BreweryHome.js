@@ -43,8 +43,8 @@ class BreweryHome extends Component {
 
     }
 
-    submitHandler = async (token, user) => {
-        await this.props.createReview(token, user)
+    submitHandler = async (token, data) => {
+        await this.props.createReview(token, data)
         this.setState({
             ...this.state,
             render: true
@@ -118,7 +118,6 @@ class BreweryHome extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.users.user,
         isLoggedIn: state.users.loggedIn,
         review: state.reviews.review
     }
