@@ -22,7 +22,6 @@ class Home extends Component {
         this.revGeoCodeLocation = this.revGeoCodeLocation.bind(this)
     }
 
-
     revGeoCodeLocation() {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.lat},${this.state.lng}&sensor=false&key=${API_KEY}`)
         .then(res => res.json())
@@ -30,8 +29,6 @@ class Home extends Component {
         .catch(err => alert(err))
     }
 
-
-    
     getLocation() {
         if (navigator.geolocation) {
             this.setState({
@@ -45,13 +42,12 @@ class Home extends Component {
     }
 
     setLocation(position) {
-        console.log(position.coords.longitude)
         this.setState({
+            ...this.state,
             lat: position.coords.latitude,
             lng: position.coords.longitude
         })
-        this.revGeoCodeLocation()
-        
+        this.revGeoCodeLocation() 
     }
 
     clearLoading = () => [
@@ -118,7 +114,7 @@ class Home extends Component {
                     </h1>
                     <button onClick={this.getLocation}>Breweries Near You</button>
                 </WelcomeCard>
-                {}
+                
             </>
         )
         :

@@ -5,7 +5,8 @@ import {
     withScriptjs, 
     withGoogleMap, 
     Marker, 
-    InfoWindow } from 'react-google-maps'
+    InfoWindow 
+} from 'react-google-maps'
 
 
 
