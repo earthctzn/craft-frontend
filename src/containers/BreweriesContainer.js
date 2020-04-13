@@ -35,6 +35,7 @@ class BreweriesContainer extends Component {
         }
     }
 
+
     renderBrewery = (props) => {
 
         let id = this.state.id
@@ -44,15 +45,16 @@ class BreweriesContainer extends Component {
         } 
         return props.all.breweriesArr.map(brewery => {
             return(
+
                 <BreweryCard key={brewery.id} onClick={e => this.handleOnClick(e, brewery)} >
-                   <CardContent>
-                    <Brewery
+                    <CardContent >
+                        <Brewery
                             key={brewery.id}
                             brewery={brewery}
-                            handleOnClick={this.handleOnClick}
                         />
-                   </CardContent>
-                </BreweryCard> 
+                    </CardContent>
+                </BreweryCard>
+                  
             )
         })
     }

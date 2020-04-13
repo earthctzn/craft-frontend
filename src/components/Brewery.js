@@ -4,6 +4,17 @@ import { AddressCard } from './ComponentStyles'
 
 class Brewery extends Component {
 
+    // state={
+    //     likes: 0
+    // }
+
+    // handleLike = () => {
+    //     let like = this.state.likes
+    //     this.setState({
+    //         likes: like + 1
+    //     })
+    // }
+
     render() {
 
         const {brewery} = this.props
@@ -18,8 +29,11 @@ class Brewery extends Component {
                     {brewery.city}
                     {' '}
                     {brewery.state}
+
                 </AddressCard>
-                
+                {/* {this.state.likes}
+                <button onClick={this.handleLike}>Like</button> */}
+            
             </>
         )
     }
