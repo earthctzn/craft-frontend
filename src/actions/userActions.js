@@ -38,7 +38,7 @@ export function clearErrors() {
 export const getUser = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch('http://localhost:3000/api/v1/user', {
+            const res = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/user', {
                 credentials: 'include'
             })
             if(!res.ok){
@@ -63,7 +63,7 @@ export const getUser = () => {
 export const logOutUser = (token) => {
     return async function (dispatch) {
         try{
-           await fetch('http://localhost:3000/api/v1/logout', {
+           await fetch('https://craft-brew-backend.herokuapp.com/api/v1/logout', {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {

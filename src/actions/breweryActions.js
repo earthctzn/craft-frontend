@@ -47,7 +47,7 @@ export const fetchSelectedBrewery = (csrf_token, brewery) => {
                 const formData = {
                     brewery: brewery
                 }
-                const response = await fetch(`http://localhost:3000/api/v1/brewery`,{
+                const response = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/brewery`,{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

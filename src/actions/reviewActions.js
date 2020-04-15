@@ -5,7 +5,7 @@ import {
     LOADING_REVIEWS    
 } from '../actionTypes/index'
 
-const reviewsURL = 'http://localhost:3000/api/v1/reviews'
+const reviewsURL = 'https://craft-brew-backend.herokuapp.com/api/v1/reviews'
 
 
 //State altering actions
