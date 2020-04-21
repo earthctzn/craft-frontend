@@ -8,7 +8,7 @@ import App from './App';
 
 
 
-require('dotenv')
+require('dotenv').config()
 
 const composeEnhancers =
   typeof window === 'object' &&
