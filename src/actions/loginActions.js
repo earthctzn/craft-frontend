@@ -40,8 +40,8 @@ export const getToken = () => {
             if(!res.ok){
                 throw res
             }
-            const token = await res.json()
-            const csrf_token = token.csrf_auth_token
+            const response = await res.json()
+            const csrf_token = response.csrf_auth_token
             dispatch({
                 type: 'SET_TOKEN',
                 payload: csrf_token
