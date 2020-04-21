@@ -74,7 +74,7 @@ class SignupInput extends Component {
         };
     
         try{
-            const response = await fetch('http://localhost:3000/api/v1/signup', options)
+            const response = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/signup', options)
             const dataObj = await response.json();
             if (dataObj.errors){
                 this.props.setErrors(dataObj)
