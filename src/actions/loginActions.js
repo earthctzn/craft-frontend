@@ -37,7 +37,7 @@ export const fbUser = (csrf_token) => {
     return async function (dispatch) {
         try{
             const response = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/auth/facebook/callback',{
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': csrf_token
