@@ -11,7 +11,7 @@ class Nav extends Component  {
     // Commented out code is Facebook login for later.
     handleClick = (event) => {
         event.preventDefault()
-        this.props.fbUser(csrf_token)
+        this.props.fbUser(this.props.csrf_token)
     }
      
     render() {
