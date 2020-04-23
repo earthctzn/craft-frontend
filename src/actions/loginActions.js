@@ -33,6 +33,33 @@ export const loginUser = (csrf_token, user) => {
     }
 };
 
+export const fbUser = (csrf_token) => {
+    return async function (dispatch) {
+        try{
+            const response = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/auth/facebook',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrf_token
+                },
+                credentials: 'include'
+            })
+            if (!response.ok) {
+                throw response
+            }
+            const userObj = await response.json()
+            if (userObj.errors) {
+                dispatch(setErrors(userObj))
+            }else{
+                dispatch(setUser(userObj))
+            }
+
+        } catch(data) {
+            console.log(data)
+        };
+    }
+};
+
 export const getToken = () => {
     return async function (dispatch) {
         try{
