@@ -20,7 +20,7 @@ class Nav extends Component  {
                 <ul className="nav-links">
                     <Link to="/login" className='nav-link'><button>Login</button></Link>
                     <Link to="/signup" className='nav-link'><button>Signup</button></Link>
-                    <button onClick={e => this.handleClick(e)} >Login with Facebook</button>
+                    {/* <button onClick={e => this.handleClick(e)} >Login with Facebook</button> */}
                 </ul>
             </nav>
         )
