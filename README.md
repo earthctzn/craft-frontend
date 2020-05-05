@@ -1,6 +1,6 @@
 # CRAFT-frontend
 
-Welcome and thank you for using CRAFT!
+Welcome and thank you for using CRAFT! A React/Redux web app for locating and reviewing breweries based on the users geolocation.
 
 ## Getting Started
 
