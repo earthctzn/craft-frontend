@@ -104,5 +104,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(
-  mapStateToProps, { fetchBreweries, fetchReviews, getToken, getUser })(App);
+export default connect(mapStateToProps, { fetchBreweries, fetchReviews, getToken, getUser })(App);

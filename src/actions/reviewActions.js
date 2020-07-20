@@ -51,7 +51,6 @@ export const fetchReviews = () => {
 
 
 //Fetch (POST) a new review with it's brewery and user.
-
 export const createReview = (token, data) => {
     return async dispatch => {
         const headers = new Headers();
