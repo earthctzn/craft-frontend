@@ -45,7 +45,7 @@ export const getUser = () => {
                 throw res
             }
             
-            const userObj = await res.json()
+            const userObj = await res.json().then((response)=> {JSON.stringify(response)})
             if (userObj.errors) {
                 dispatch(setErrors(userObj))
             }else {
