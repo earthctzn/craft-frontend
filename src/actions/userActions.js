@@ -33,19 +33,20 @@ export function clearErrors() {
         type: CLEAR_ERRORS
     }
 }
-
+// `http://localhost:3000/api/v1/user`
+// `https://craft-brew-backend.herokuapp.com/api/v1/user`
 // Get current user on app load or refresh
 export const getUser = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/user', {
+            const res = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/user`, {
                 credentials: 'include'
             })
             if(!res.ok){
                 throw res
             }
             
-            const userObj = await res.json().then((response)=> {JSON.stringify(response)})
+            const userObj = await res.json()
             if (userObj.errors) {
                 dispatch(setErrors(userObj))
             }else {
@@ -57,12 +58,13 @@ export const getUser = () => {
         }
     }
 }
-
+// `https://craft-brew-backend.herokuapp.com/api/v1/logout`
+// `http://localhost:3000/api/v1/user`
 // Logout user and get a fresh token
 export const logOutUser = (token) => {
     return async function (dispatch) {
         try{
-           await fetch('https://craft-brew-backend.herokuapp.com/api/v1/logout', {
+           await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/logout`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
@@ -73,7 +75,7 @@ export const logOutUser = (token) => {
             dispatch(clearUser())
             dispatch(getToken())
         }catch(data){
-            console.log(data.errors)
+            console.log(data)
         }
     }
 }

@@ -6,9 +6,9 @@ import {
 } from '../actionTypes/index'
 
 
-const reviewsURL = 'https://craft-brew-backend.herokuapp.com/api/v1/reviews'
-// 'http://localhost:3000/api/v1/reviews'
-// https://craft-brew-backend.herokuapp.com/api/v1/reviews
+const reviewsURL = `https://craft-brew-backend.herokuapp.com/api/v1/reviews`
+// `http://localhost:3000/api/v1/reviews`
+// `https://craft-brew-backend.herokuapp.com/api/v1/reviews`
 
 
 //State altering actions
@@ -60,7 +60,6 @@ export const createReview = (token, data) => {
         headers.append('Content-Type', 'application/json')
         headers.append('Accepts', 'application/json')
         headers.append('X-CSRF-Token', token)
-        console.log(data)
         const formData = { 
             
             review: {

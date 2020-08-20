@@ -8,7 +8,9 @@ export const loginUser = (csrf_token, user) => {
                 email: user.email,
                 password: user.password
             }};
-            const response = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/login',{
+            // `https://craft-brew-backend.herokuapp.com/api/v1/login`
+            // `http://localhost:3000/api/v1/login`
+            const response = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/login`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,11 +35,12 @@ export const loginUser = (csrf_token, user) => {
     }
 };
 
-
+// `https://craft-brew-backend.herokuapp.com/api/v1/auth`
+// `http://localhost:3000/api/v1/auth`
 export const getToken = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/auth', {credentials: 'include'})
+            const res = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/auth`, {credentials: 'include'})
             if(!res.ok){
                 throw res
             }

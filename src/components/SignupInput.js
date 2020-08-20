@@ -72,9 +72,10 @@ class SignupInput extends Component {
             body: JSON.stringify(formData),
             credentials: 'include'
         };
-    
+        // `https://craft-brew-backend.herokuapp.com/api/v1/signup`
+        // `http://localhost:3000/api/v1/signup`
         try{
-            const response = await fetch('https://craft-brew-backend.herokuapp.com/api/v1/signup', options)
+            const response = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/signup`, options)
             const dataObj = await response.json();
             if (dataObj.errors){
                 this.props.setErrors(dataObj)
