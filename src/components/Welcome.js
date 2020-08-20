@@ -2,6 +2,7 @@ import React, {Component } from 'react'
 import { WelcomeCard } from './ComponentStyles'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Welcome extends Component {
 
@@ -15,7 +16,7 @@ class Welcome extends Component {
         (
             <WelcomeCard>
                 <h1>Craft</h1>
-                <h2>Login or Signup to start!</h2>
+                <h2><Link to="/login" className='nav-link'><button>Login</button></Link> or <Link to="/signup" className='nav-link'><button>Signup</button></Link> to start!</h2>
             </WelcomeCard>
         )
     }

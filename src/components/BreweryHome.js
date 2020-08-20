@@ -4,11 +4,10 @@ import Brewery from './Brewery'
 import { SingleBrewery, MapCard } from './ComponentStyles'
 import ReviewInput from './ReviewInput'
 import Review from './Review'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createReview } from '../actions/reviewActions'
-import ReviewContainer from '../containers/ReviewsContainer'
- 
+import ReviewContainer from '../containers/ReviewsContainer' 
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
 
@@ -50,15 +49,20 @@ class BreweryHome extends Component {
             render: true
         })
     }
+    onClick = () => {
+        this.setState({
+            ...this.state,
+            display: false
+        })
+    }
 
     renderReview = () => {
         return (
             <div className='modal'>
                 <SingleBrewery>
-                    <button onClick={this.closeModal}>Close</button>
                     <Brewery brewery={this.props.brewery}/> 
+                    <button onClick={this.closeModal}>Close</button>
                     { this.props.review ? <Review review={this.props.review}/> : null }
-                    
                 </SingleBrewery>
             </div>
         )
@@ -80,6 +84,7 @@ class BreweryHome extends Component {
                 <SingleBrewery>
                     <Brewery brewery={brewery} />
                     {this.state.display ? <ReviewInput brewery={brewery} revCreate={this.submitHandler} /> : null}
+                    {this.state.display ?  <button onClick={this.onClick}> Camcel </button> : null}
                     {!this.state.display ? <button name='input' onClick={this.handleOnClick} > Leave a Review </button> : null }
                     {' '}
                     {this.state.showReviews ? <Redirect to={`/breweries/${this.props.brewery.id}/reviews`} /> : null}

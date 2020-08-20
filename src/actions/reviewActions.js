@@ -5,7 +5,10 @@ import {
     LOADING_REVIEWS    
 } from '../actionTypes/index'
 
+
 const reviewsURL = 'https://craft-brew-backend.herokuapp.com/api/v1/reviews'
+// 'http://localhost:3000/api/v1/reviews'
+// https://craft-brew-backend.herokuapp.com/api/v1/reviews
 
 
 //State altering actions
@@ -44,7 +47,7 @@ export const fetchReviews = () => {
                 const reviewData = await response.json()
                 dispatch(setReviews(reviewData))
         }catch(data){
-                console.log(data)
+            console.log(data.error)
         }
     }
 }
@@ -57,12 +60,14 @@ export const createReview = (token, data) => {
         headers.append('Content-Type', 'application/json')
         headers.append('Accepts', 'application/json')
         headers.append('X-CSRF-Token', token)
-
+        console.log(data)
         const formData = { 
+            
             review: {
                 content: data.content,
                 user_id: data.user_id,
-                brewery_id: data.brewery.id
+                brewery_id: data.brewery.id,
+                username: data.username
             },
             brewery: data.brewery
         }
@@ -84,7 +89,7 @@ export const createReview = (token, data) => {
             dispatch(setReview(dataObj))
             
         }catch(data){
-            console.log(data)
+            console.log(data.errors)
         }
     }
 }

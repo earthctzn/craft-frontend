@@ -10,6 +10,7 @@ import styled from 'styled-components'
         border-color: black;
         :hover{
             box-shadow: 10px 5px 5px darkred;
+            cursor: pointer;
         }
     `
     const CardContent = styled.div`

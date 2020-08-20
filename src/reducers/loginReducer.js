@@ -20,9 +20,15 @@ export default function loginReducer(state= {user: null, formErrors: [], loggedI
                 loggedIn: false
             }
         case ADD_ERRORS:
-             let errors = action.payload.errors.map(err => {
-                return  err
-            })
+            let errors 
+            if(action.payload.errors !== undefined){
+              errors = action.payload.errors.map(err => {
+                    return  err
+                })   
+            } else {
+                return action.payload
+            }
+
             return {
                 ...state, formErrors: errors
             }

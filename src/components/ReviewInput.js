@@ -5,14 +5,16 @@ class ReviewInput extends Component {
     state = {
         content: '',
         brewery: null,
-        user_id: null
+        user_id: null,
+        username: null
     }
 
     componentDidMount() {
         this.setState({
             ...this.state,
             user_id: this.props.user.id,
-            brewery: this.props.brewery
+            brewery: this.props.brewery,
+            username: this.props.user.username
         })
     }
 
@@ -30,7 +32,8 @@ class ReviewInput extends Component {
             this.setState({
                 content: '',
                 user_id: null,
-                brewery: null
+                brewery: null,
+                username: null
             })
         }
 
