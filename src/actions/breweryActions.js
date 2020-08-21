@@ -4,8 +4,9 @@ import {
     LOADING_BREWERIES,
 
 } from '../actionTypes'
-
-
+// 'https://craft-brew-backend.herokuapp.com`
+// 'http://localhost3000'
+const thisURL = 'http://localhost3000'
 const setBreweries = ( breweries ) => {
     return { type: ADD_BREWERIES, payload: breweries }
 }
@@ -47,9 +48,8 @@ export const fetchSelectedBrewery = (csrf_token, brewery) => {
                 const formData = {
                     brewery: brewery
                 }
-                // `https://craft-brew-backend.herokuapp.com/api/v1/brewery`
-                // `http://localhost3000/api/v1/brewery`
-                const response = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/brewery`,{
+
+                const response = await fetch(`${thisURL} + /api/v1/brewery`,{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
