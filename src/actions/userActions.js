@@ -10,7 +10,7 @@ import { getToken } from './loginActions'
 // 'http://localhost:3000'
 // 'https://craft-brew-backend.herokuapp.com'
 
-const thisURL = 'http://localhost:3000'
+const thisURL = 'https://craft-brew-backend.herokuapp.com'
 
 
 //State altering actions
@@ -44,7 +44,7 @@ export function clearErrors() {
 export const getUser = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch(`${thisURL} + /api/v1/user`, {
+            const res = await fetch(`${thisURL}/api/v1/user`, {
                 credentials: 'include'
             })
             if(!res.ok){
@@ -63,13 +63,12 @@ export const getUser = () => {
         }
     }
 }
-// `https://craft-brew-backend.herokuapp.com/api/v1/logout`
-// `http://localhost:3000/api/v1/logout`
+
 // Logout user and get a fresh token
 export const logOutUser = (token) => {
     return async function (dispatch) {
         try{
-           await fetch(`${thisURL} + /api/v1/logout`, {
+           await fetch(`${thisURL}/api/v1/logout`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {

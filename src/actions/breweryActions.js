@@ -4,9 +4,11 @@ import {
     LOADING_BREWERIES,
 
 } from '../actionTypes'
-// 'https://craft-brew-backend.herokuapp.com`
+// 'https://craft-brew-backend.herokuapp.com'
 // 'http://localhost3000'
-const thisURL = 'http://localhost3000'
+
+const thisURL = 'https://craft-brew-backend.herokuapp.com'
+
 const setBreweries = ( breweries ) => {
     return { type: ADD_BREWERIES, payload: breweries }
 }
@@ -27,7 +29,7 @@ export const fetchBreweries = () => {
     return async dispatch => {
         try {
             dispatch(loadingBreweries())
-                const response = await fetch(`https://api.openbrewerydb.org/breweries?&per_page=32`)
+                const response = await fetch('https://api.openbrewerydb.org/breweries?&per_page=32')
                 if (!response.ok) {
                     throw response
                 }
@@ -49,7 +51,7 @@ export const fetchSelectedBrewery = (csrf_token, brewery) => {
                     brewery: brewery
                 }
 
-                const response = await fetch(`${thisURL} + /api/v1/brewery`,{
+                const response = await fetch(`${thisURL}/api/v1/brewery`,{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

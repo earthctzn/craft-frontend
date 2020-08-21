@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 import { ErrorComponent } from './ErrorComponent';
 import { Redirect } from 'react-router-dom'
 import { setErrors, setUser, clearErrors} from '../actions/userActions'
+// 'https://craft-brew-backend.herokuapp.com'
+// 'http://localhost:3000'
 
+const thisURL = 'https://craft-brew-backend.herokuapp.com'
 
 
 class SignupInput extends Component {
@@ -72,10 +75,9 @@ class SignupInput extends Component {
             body: JSON.stringify(formData),
             credentials: 'include'
         };
-        // `https://craft-brew-backend.herokuapp.com/api/v1/signup`
-        // `http://localhost:3000/api/v1/signup`
+
         try{
-            const response = await fetch(`https://craft-brew-backend.herokuapp.com/api/v1/signup`, options)
+            const response = await fetch(`${thisURL}/api/v1/signup`, options)
             const dataObj = await response.json();
             if (dataObj.errors){
                 this.props.setErrors(dataObj)

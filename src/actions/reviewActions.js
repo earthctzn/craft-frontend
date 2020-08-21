@@ -6,8 +6,8 @@ import {
 } from '../actionTypes/index'
 
 
-const reviewsURL = 'http://localhost:3000'
-// 
+const reviewsURL = 'https://craft-brew-backend.herokuapp.com'
+// 'http://localhost:3000'
 // 'https://craft-brew-backend.herokuapp.com'
 
 
@@ -40,7 +40,7 @@ export const fetchReviews = () => {
     return async dispatch => {
         try {
             dispatch({ type: LOADING_REVIEWS})
-                const response = await fetch(`${thisURL} + /api/v1/reviews`, {credentials: 'include'})
+                const response = await fetch(`${reviewsURL}/api/v1/reviews`, {credentials: 'include'})
                 if (!response.ok) {
                     throw response
                 }
@@ -79,7 +79,7 @@ export const createReview = (token, data) => {
         }
 
         try{
-            const response = await fetch(`${thisURL} + /api/v1/reviews`, options)
+            const response = await fetch(`${reviewsURL}/api/v1/reviews`, options)
             if(!response.ok) {
                 throw response
             }
