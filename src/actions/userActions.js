@@ -10,7 +10,7 @@ import { getToken } from './loginActions'
 // 'http://localhost:3000'
 // 'https://craft-brew-backend.herokuapp.com'
 
-const thisURL = 'https://craft-brew-backend.herokuapp.com'
+const thisURL = 'http://localhost:3000'
 
 
 //State altering actions

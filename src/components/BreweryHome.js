@@ -84,7 +84,7 @@ class BreweryHome extends Component {
                 <SingleBrewery>
                     <Brewery brewery={brewery} />
                     {this.state.display ? <ReviewInput brewery={brewery} revCreate={this.submitHandler} /> : null}
-                    {this.state.display ?  <button onClick={this.onClick}> Camcel </button> : null}
+                    {this.state.display ?  <button onClick={this.onClick}> Cancel </button> : null}
                     {!this.state.display ? <button name='input' onClick={this.handleOnClick} > Leave a Review </button> : null }
                     {' '}
                     {this.state.showReviews ? <Redirect to={`/breweries/${this.props.brewery.id}/reviews`} /> : null}
