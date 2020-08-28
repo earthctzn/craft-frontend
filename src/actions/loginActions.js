@@ -28,7 +28,7 @@ export const loginUser = (csrf_token, user) => {
                 throw response
             }
             const userObj = await response.json()
-            if (userObj.errors) {
+            if (userObj.errors || userObj.exception) {
                 dispatch(setErrors(userObj))
             }else{
                 dispatch(setUser(userObj))
