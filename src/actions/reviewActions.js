@@ -47,7 +47,7 @@ export const fetchReviews = () => {
                 const reviewData = await response.json()
                 dispatch(setReviews(reviewData))
         }catch(data){
-            console.log(data.error)
+            console.log(data)
         }
     }
 }

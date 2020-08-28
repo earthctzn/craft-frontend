@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 //Containers
 import BreweriesContainer from './containers/BreweriesContainer';
 import ReviewsContainer from './containers/ReviewsContainer';
-import LoginContainer from './containers/LoginContainer';
 
 //Components
 import Nav from './components/Nav';
@@ -17,6 +16,7 @@ import Home from './components/Home';
 import SelectedBrewery from './components/SelectedBrewery';
 import UserNav from './components/UserNav';
 import SignupInput from './components/SignupInput';
+import LoginInput from './components/LoginInput';
 
 //Actions
 import { fetchBreweries } from './actions/breweryActions';
@@ -75,7 +75,7 @@ class App extends Component {
             </Route>
 
             <Route path="/login" >
-              <LoginContainer />
+              <LoginInput />
             </Route>
 
             <Route path="/signup" >

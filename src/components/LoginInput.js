@@ -4,6 +4,7 @@ import { LoginCard } from './ComponentStyles'
 import { ErrorComponent } from './ErrorComponent'
 import { Redirect } from 'react-router-dom'
 import { clearErrors } from '../actions/userActions'
+import { loginUser } from '../actions/loginActions'
 
 
 class LoginInput extends Component {
@@ -27,7 +28,7 @@ class LoginInput extends Component {
 
     renderErrors = () => {
         return this.props.errors.map(error => <ErrorComponent key={error} error={error} />)
-     } 
+    } 
 
     handleInputChange = event => {
         this.setState({
@@ -37,7 +38,7 @@ class LoginInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        this.props.handleSubmit(this.props.csrf_token, this.state)
+        this.props.loginUser(this.props.csrf_token, this.state)
         this.setState({
             email: '',
             password: ''
@@ -89,4 +90,4 @@ const mapStateToProps = state => {
         errors: state.users.formErrors
     }
 }
-export default connect(mapStateToProps, {clearErrors})(LoginInput)
+export default connect(mapStateToProps, {clearErrors, loginUser})(LoginInput)

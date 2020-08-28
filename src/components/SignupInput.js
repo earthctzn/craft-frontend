@@ -7,7 +7,7 @@ import { setErrors, setUser, clearErrors} from '../actions/userActions'
 // 'https://craft-brew-backend.herokuapp.com'
 // 'http://localhost:3000'
 
-const thisURL = 'https://craft-brew-backend.herokuapp.com'
+const thisURL = 'http://localhost:3000'
 
 
 class SignupInput extends Component {

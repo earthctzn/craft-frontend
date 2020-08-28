@@ -59,7 +59,7 @@ export const getUser = () => {
             }
             
         }catch(data){
-            console.log(data)
+            console.log( data)
         }
     }
 }

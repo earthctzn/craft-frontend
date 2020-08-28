@@ -35,7 +35,7 @@ export const loginUser = (csrf_token, user) => {
             }
 
         } catch(data) {
-           console.log(data.statusText)
+           console.log(data)
         };
     }
 };
@@ -54,7 +54,7 @@ export const getToken = () => {
                 payload: csrf_token
             })
         }catch(data){
-            console.log(data.statusText)
+            console.log(data)
         }
     }
 }
